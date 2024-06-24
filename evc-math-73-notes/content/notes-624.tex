@@ -1,0 +1,145 @@
+\chapter{June 24, 2024}
+
+\section{Quadratics and Surfaces in Three Dimensions}
+
+\begin{definition}
+    A quadratic in three dimensions is represented by the equation
+    \[Ax^{2} + By^{2} + Cz^{2} + Dxy + Exz + Fyz + Gx + Hy + Iz + J = 0.\]
+\end{definition}
+
+\begin{example}[Slicing an Ellipsoid]
+    How does the surface defined by
+    \[\frac{x^{2}}{4} + \frac{y^{2}}{9} + z^{2} = 1\]
+    look when a slice of it is viewed in two dimensions?
+
+    \begin{soln}
+        Well, it depends whether we view this from the $xy$-plane, the $yz$-plane, the $xz$-plane, or a plane offset parallel to any of the three. For the sake of the example, we look at the $xy$-plane, which can be achieved by setting $z = 0$. What results is
+        \[\frac{x^{2}}{4} + \frac{y^{2}}{9} = 1,\]
+        or the standard equation of an ellipse. In fact, the result is similar when viewing from all three planes and even from certain parallel planes.
+    \end{soln}
+\end{example}
+
+\begin{remark}
+    The slicing method described above is a method that can be used to figure out the shape of a surface from various two-dimensional shapes that are more recognizable and simpler to graph. Because we see an ellipse when viewing from all three planes, the above solid is an example of an ellipsoid.
+\end{remark}
+
+\begin{example}
+    Find the shape of $x^{2} + y^{2} + z = 0$ in space.
+
+    \begin{soln}
+        We proceed with the slicing method described above. First, we look at $z = 0$, and see that the result is a point. When $z = -1$, the result is a circle with radius 1. When $z = -4$, the result is a circle with radius 2. Notice that when $z > 0$, the equation has no real solutions. So, the resulting surface is a parabolic cone with a vertex at the origin opening toward the negative $z$-axis.
+    \end{soln}
+\end{example}
+
+What you may see is that these surfaces are essentially combinations of conics that you have likely encountered before in math classes or elsewhere. However, they can also be hyperbolas, which I feel are a little less commonly studied. Just in case you are unfamiliar with the ins and outs of hyperbolas, I offer a little explanation below.
+
+\begin{definition}
+    A hyperbola in the Cartesian plane has equation
+    \[\abs{\frac{(x - x_{0})^{2}}{a^{2}} - \frac{(y - y_{0})^{2}}{b^{2}}} = 1.\]
+\end{definition}
+
+Notice that the equation is nested in an absolute value function. This purely results from the fact that hyperbolas can open vertically or horizontally. If the initial subtraction inside the absolute value is positive, then the hyperbola opens horizontally. Otherwise, it opens vertically.
+
+Here, $(x_{0}, y_{0})$ is the center of the hyperbola, while $a$ and $b$ determine the position of the vertices and foci. If the hyperbola opens horizontally, $a$ is the distance from the center to each vertex, and if the hyperbola opens vertically then $b$ is the distance from the center to each vertex. For the foci specifically, $a^{2} + b^{2} = c^{2}$, where $c$ is the distance from the foci to the center of the hyperbola. One last thing of note is that the hyperbola has two slant asymptotes with slope $\pm\frac{b}{a}$.
+
+With an understanding of conics, the extension into three-dimensional quadratics is far more simple than it may have otherwise been.
+
+In fact, more general 3D surfaces can be interpretted in similar ways. For example, if given $y = z^{3}$, you can determine that the surface is invariant with respect to $x$.
+
+\section{Vector Functions}
+
+In the previous section, we focused our attention on surfaces. We now turn to paths in 3D space that can be represented by vector functions. For the sake of maintaining scope, we only go into as much depth as is needed to define these functions in our desired space.
+
+\begin{definition}
+    A vector function in 3D space is defined by
+    \[\vec{r}(t) = \left<f(t), g(t), h(t)\right>,\]
+    where $f$, $g$, and $h$ are functions of a parameter $t$.
+\end{definition}
+
+A clear observation is that the above is very similar to our definition of a line in space from earlier notes, which is true. A line is simply a specific case of a vector function.
+
+\begin{example}
+    Describe the path followed by $\vec{r}(t) = \left<t, \sin t, \cos t\right>$.
+
+    \begin{soln}
+        The most straightforward way to approach this problem is by looking at how each of the componants vary on their own. First, we look at $x$ and see that it is simply linear. Then, the combination of $y$ and $z$ form a circular path parallel to the $yz$-plane. So, what we get is a spring-like shape.
+    \end{soln}
+\end{example}
+
+When evaluating the domain of vector functions, we must find values of the parameter $t$ that are defined for all three of $x$, $y$, and $z$.
+
+\begin{example}
+    Find the domain of $\vec{r}(t) = \left<\sqrt{t + 2}, t^{2}, \cos t\right>$.
+
+    \begin{soln}
+        After quick observation, the function for $x$ is the only one with a domain restriction, requiring $t \geq -2$. So, our domain is
+        \[D = \{t \mid t \geq -2\}.\]
+    \end{soln}
+\end{example}
+
+Domain restrictions can also be used to artifically limit the range of a function.
+
+\begin{example}
+    Find a general equation for a line segment between points $P$ and $Q$.
+
+    \begin{soln}
+        This line has direction vector $\vec{PQ}$ and starts at $P$. So,
+        \[\vec{r}(t) = \vec{P} + t\vec{PQ}.\]
+        Since we do not want to extend past $Q$, we limit the domain to
+        \[D = \{t \mid 0 \leq t \leq 1\}\]
+        despite $\vec{r}(t)$ being defined for all real numbers $t$.
+    \end{soln}
+\end{example}
+
+Now, we begin to do some calculus with vectors.
+
+\begin{definition}
+    The unit tangent vector to $\vec{r}(t)$ is denoted by
+    \[\vec{T}(t) = \frac{\ddvec{r}(t)}{\magnitude{\ddvec{r}(t)}}.\]
+\end{definition}
+
+Let's proceed to define some differentiation rules for vectors. As you may notice, many of these are very similary to scalar derivative rules.
+
+\begin{proposition}
+    Given vector functions $\vec{u}(t)$ and $\vec{v}(t)$,
+    \[\frac{d}{dt}\left[\vec{u}(t) + \vec{v}(t)\right] = \ddvec{u}(t) + \ddvec{v}(t).\]
+\end{proposition}
+
+\begin{proposition}
+    Given vector function $\vec{v}(t)$ and scalar constant $c$,
+    \[\frac{d}{dt}\left[c\vec{v}(t)\right] = c\ddvec{v}(t).\]
+\end{proposition}
+
+\begin{proposition}
+    Given vector functions $\vec{u}(t)$ and $\vec{v}(t)$,
+    \[\frac{d}{dt}\left[\vec{u}(t) \cdot \vec{v}(t)\right] = \ddvec{u}(t) \cdot \vec{v}(t) + \vec{u}(t) \cdot \ddvec{v}(t).\]
+\end{proposition}
+
+\begin{proposition}
+    Given vector functions $\vec{u}(t)$ and $\vec{v}(t)$,
+    \[\frac{d}{dt}\left[\vec{u}(t) \times \vec{v}(t)\right] = \ddvec{u}(t) \times \vec{v}(t) + \vec{u}(t) \times \ddvec{v}(t).\]
+\end{proposition}
+
+\begin{proposition}[Chain Rule]
+    Given a vector function $\vec{v}(t)$ and scalar function $f(t)$,
+    \[\frac{d}{dt}\left[\vec{v}(f(t))\right] = f^{\prime}(t)\cdot \ddvec{v}(f(t)).\]
+\end{proposition}
+
+\begin{theorem}
+    Given a vector function $\vec{r}(t)$ and some scalar constant $c$, if
+    \[\magnitude{\vec{r}(t)} = c\]
+    for all $t$ in the domain of $\vec{r}$, then
+    \[\ddvec{r}(t) \perp \vec{r}(t)\]
+    for all $t$ in the domain of $\ddvec{r}$.
+\end{theorem}
+
+\begin{proof}
+    Let $\vec{r}(t) = \left<f(t), g(t), h(t)\right>$. We know that
+    \[\sqrt{(f(t))^{2} + (g(t))^{2} + (h(t))^{2}} = c.\]
+    By definition, we have that
+    \[\ddvec{r}(t) \cdot \vec{r}(t) = f(t)f'(t) + g(t)g'(t) + h(t)h'(t).\]
+    Consider the expression
+    \[[f(t) + g(t) + h(t)]^{2}\]
+    which can be broken up into
+    \[[f(t) + g(t) + h(t)]^{2} = c^{2} + 2 \cdot \ddvec{r}(t) \cdot \vec{r}(t).\]
+\end{proof}

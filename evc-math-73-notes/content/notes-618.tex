@@ -101,8 +101,13 @@ Lines in 3-dimensional space are not written in the same way that they are in tw
     Find a general formula for the distance between a point and a plane not containing that point in $\RR^{3}$ space.
 
     \begin{soln}
-        Let our point be $P$ and let $Q$ be an arbitrary point on plane $\mathcal{P}$. Let $\vec{u}$ be the vector from $P$ to $Q$ and let $\vec{v}$ be a vector parallel to the normal vector of $\mathcal{P}$. It follows that the distance is the magnitude of the projection of $\vec{u}$ onto $\vec{v}$, which is defined by
+        Let our point be $P$ and let $Q$ be an arbitrary point on plane $\mathcal{P}$. Let $\vec{u}$ be the vector from $P$ to $Q$ and let $\vec{v}$ be a normal vector of $\mathcal{P}$. It follows that the distance is the magnitude of the projection of $\vec{u}$ onto $\vec{v}$, which is defined by
         \[d = \abs{\vectorproj{\vec{v}}{\vec{u}}} = \frac{\abs{\vec{u} \cdot \vec{v}}}{\magnitude{\vec{v}}}.\]
+
+        In the name of a more memorable formula, we reference terminology from the equation of $\mathcal{P}$. Let's say that $\mathcal{P}$ has equation
+        \[ax + by + cz + d = 0\]
+        and that $P = (x_{1}, y_{1}, z_{1})$. The above equation is equivalent to
+        \[d = \frac{\abs{ax_{1} + by_{1} + cz_{1} + d}}{\sqrt{a^{2} + b^{2} + c^{2}}}.\]
     \end{soln}
 \end{example}
 
