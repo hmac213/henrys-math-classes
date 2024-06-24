@@ -5,7 +5,7 @@
 Aside from the dot product, there is one more product to consider between vectors. This, of course, is the cross product, an operation that results in a vector output and does not follow the typical rules of multiplication that the dot product follows.
 
 \begin{definition}[Vector Cross Product]
-    In $\RR_{3}$ space, the cross product of $\vec{u} = \left<a_{1}, a_{2}, a_{3}\right>$ and $\vec{v} = \left<b_{1}, b_{2}, b_{3}\right>$ is
+    In $\RR^{3}$ space, the cross product of $\vec{u} = \left<a_{1}, a_{2}, a_{3}\right>$ and $\vec{v} = \left<b_{1}, b_{2}, b_{3}\right>$ is
     \[\vec{u} \times \vec{v} = \det \begin{bmatrix} \hat{\imath} & \hat{\jmath} & \hat{k} \\ a_{1} & a_{2} & a_{3} \\ b_{1} & b_{2} & b_{3} \end{bmatrix}.\]
 \end{definition}
 
@@ -85,7 +85,7 @@ Now, we explore an example that utilizes the trigonometric representation above.
 Lines in 3-dimensional space are not written in the same way that they are in two-dimensional space. In fact, they must be paramaterized or written using symmetric equation (which we get to later).
 
 \begin{definition}
-    A line in $\RR_{3}$ space is written in the form $\vec{p} + t\vec{u}$ where $\vec{p}$ represents a position vector, $\vec{u}$ represents a direction vector, and $t$ is a varied parameter.
+    A line in $\RR^{3}$ space is written in the form $\vec{p} + t\vec{u}$ where $\vec{p}$ represents a position vector, $\vec{u}$ represents a direction vector, and $t$ is a varied parameter.
 \end{definition}
 
 \begin{remark}
@@ -93,12 +93,12 @@ Lines in 3-dimensional space are not written in the same way that they are in tw
 \end{remark}
 
 \begin{theorem}[Distance between a Point and a Line in 3D]
-    Given an arbitrary point $P$ in $\RR_{3}$ space not on line $\ell$ and a point $Q$ on $\ell$, let the vector from $P$ to $Q$ be $\vec{u}$ and $\vec{v}$ be a vector parallel to $\ell$. The shortest distance from $P$ to $\ell$ is
+    Given an arbitrary point $P$ in $\RR^{3}$ space not on line $\ell$ and a point $Q$ on $\ell$, let the vector from $P$ to $Q$ be $\vec{u}$ and $\vec{v}$ be a vector parallel to $\ell$. The shortest distance from $P$ to $\ell$ is
     \[d = \frac{\magnitude{\vec{u} \times \vec{v}}}{\magnitude{\vec{v}}}.\]
 \end{theorem}
 
 \begin{example}[Distance between a Point and a Plane in 3D]
-    Find a general formula for the distance between a point and a plane not containing that point in $\RR_{3}$ space.
+    Find a general formula for the distance between a point and a plane not containing that point in $\RR^{3}$ space.
 
     \begin{soln}
         Let our point be $P$ and let $Q$ be an arbitrary point on plane $\mathcal{P}$. Let $\vec{u}$ be the vector from $P$ to $Q$ and let $\vec{v}$ be a vector parallel to the normal vector of $\mathcal{P}$. It follows that the distance is the magnitude of the projection of $\vec{u}$ onto $\vec{v}$, which is defined by
@@ -111,7 +111,7 @@ Lines in 3-dimensional space are not written in the same way that they are in tw
 Now that's the end of all the main material that was covered in class, but the professor also brought up the topic of Jacobians, so I include them here. In essence, the Jacobian is a matrix that approximates how a vector-valued function changes at a point. A rigorous definition is below.
 
 \begin{definition}[The Jacobian Matrix]
-    A function $f : \RR_{n} \to \RR_{m}$ has Jacobian matrix
+    A function $f : \RR^{n} \to \RR^{m}$ has Jacobian matrix
     \[J = \begin{bmatrix}
         \frac{\partial f_{1}}{\partial x_{1}} & \cdots & \frac{\partial f_{1}}{\partial x_{n}} \\
         \vdots & & \vdots \\
