@@ -120,10 +120,12 @@ Let's proceed to define some differentiation rules for vectors. As you may notic
     \[\frac{d}{dt}\left[\vec{u}(t) \times \vec{v}(t)\right] = \ddvec{u}(t) \times \vec{v}(t) + \vec{u}(t) \times \ddvec{v}(t).\]
 \end{proposition}
 
-\begin{proposition}[Chain Rule]
+\begin{proposition}
     Given a vector function $\vec{v}(t)$ and scalar function $f(t)$,
     \[\frac{d}{dt}\left[\vec{v}(f(t))\right] = f^{\prime}(t)\cdot \ddvec{v}(f(t)).\]
 \end{proposition}
+
+Using these rules for differentiation, we can prove a result, that once visualized, is actually quite intuitive.
 
 \begin{theorem}
     Given a vector function $\vec{r}(t)$ and some scalar constant $c$, if
@@ -134,12 +136,9 @@ Let's proceed to define some differentiation rules for vectors. As you may notic
 \end{theorem}
 
 \begin{proof}
-    Let $\vec{r}(t) = \left<f(t), g(t), h(t)\right>$. We know that
-    \[\sqrt{(f(t))^{2} + (g(t))^{2} + (h(t))^{2}} = c.\]
-    By definition, we have that
-    \[\ddvec{r}(t) \cdot \vec{r}(t) = f(t)f'(t) + g(t)g'(t) + h(t)h'(t).\]
-    Consider the expression
-    \[[f(t) + g(t) + h(t)]^{2}\]
-    which can be broken up into
-    \[[f(t) + g(t) + h(t)]^{2} = c^{2} + 2 \cdot \ddvec{r}(t) \cdot \vec{r}(t).\]
+    Because
+    \[\magnitude{\vec{r}(t)}^{2} = \vec{r}(t) \cdot \vec{r}(t) = c^{2},\]
+    we can differentiate to yield a zero result.
+    \[\frac{d}{dt}\left[\vec{r}(t) \cdot \vec{r}(t)\right] = 2 \cdot \vec{r}(t) \cdot \ddvec{r}(t) = 0.\]
+    Since $\vec{r}(t) \cdot \ddvec{r}(t) = 0$, we conclude that the two vectors are orthogonal.
 \end{proof}
