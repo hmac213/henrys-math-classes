@@ -35,16 +35,18 @@ What you may see is that these surfaces are essentially combinations of conics t
 
 \begin{definition}
     A hyperbola in the Cartesian plane has equation
-    \[\abs{\frac{(x - x_{0})^{2}}{a^{2}} - \frac{(y - y_{0})^{2}}{b^{2}}} = 1.\]
+    \[\frac{(x - x_{0})^{2}}{a^{2}} - \frac{(y - y_{0})^{2}}{b^{2}} = 1\]
+    or
+    \[\frac{(y - y_{0})^{2}}{a^{2}} - \frac{(x - x_{0})^{2}}{b^{2}} = 1\]
 \end{definition}
 
-Notice that the equation is nested in an absolute value function. This purely results from the fact that hyperbolas can open vertically or horizontally. If the initial subtraction inside the absolute value is positive, then the hyperbola opens horizontally. Otherwise, it opens vertically.
+The need for two equations arises from the fact that hyperbolas can open either vertically or horizontally. In the case of the first equation, the hyperbola opens horizontally. In the second, it opens vertically.
 
-Here, $(x_{0}, y_{0})$ is the center of the hyperbola, while $a$ and $b$ determine the position of the vertices and foci. If the hyperbola opens horizontally, $a$ is the distance from the center to each vertex, and if the hyperbola opens vertically then $b$ is the distance from the center to each vertex. For the foci specifically, $a^{2} + b^{2} = c^{2}$, where $c$ is the distance from the foci to the center of the hyperbola. One last thing of note is that the hyperbola has two slant asymptotes with slope $\pm\frac{b}{a}$.
+In both equations, $(x_{0}, y_{0})$ is the center of the hyperbola, while $a$ and $b$ determine the position of the vertices and foci. Specifically, $a$ is the distance from the center to each vertex and $a^{2} + b^{2} = c^{2}$, where $c$ is the distance from the foci to the center of the hyperbola. One last thing of note is that the hyperbola has two slant asymptotes with slope $\pm\frac{b}{a}$ in the first equation and $\pm\frac{a}{b}$ in the second.
 
 With an understanding of conics, the extension into three-dimensional quadratics is far more simple than it may have otherwise been.
 
-In fact, more general 3D surfaces can be interpretted in similar ways. For example, if given $y = z^{3}$, you can determine that the surface is invariant with respect to $x$.
+In fact, more general 3D surfaces can be interpretted in similar ways. For example, if given $y = z^{3}$, you can determine that the surface is invariant with respect to $x$ and easily visualize the extension of the cubic function from two dimensions.
 
 \section{Vector Functions}
 
@@ -88,6 +90,21 @@ Domain restrictions can also be used to artifically limit the range of a functio
         Since we do not want to extend past $Q$, we limit the domain to
         \[D = \{t \mid 0 \leq t \leq 1\}\]
         despite $\vec{r}(t)$ being defined for all real numbers $t$.
+    \end{soln}
+\end{example}
+
+Just as two planes intersect in a line, the intersection of surfaces can often be described by vector functions.
+
+\begin{example}
+    Find the vector function of the curve that composes the intersection of $z = x^{2} - y^{2}$ and $x^{2} + y^{2} = 1$.
+
+    \begin{soln}
+        First, take a look at the second equation and notice that planes parallel to the $xy$-plane will contain circular traces with radius one. So, we let $x = \cos t$ and $y = \sin t$. Now, we solve for $z$ by substituting for $x$ and $y$ in terms of $t$ to get
+        \[z = \cos^{2}t - \sin^{2}t,\]
+        which yields
+        \[z = \cos 2t.\]
+        So,
+        \[\vec{r}(t) = \left<\cos t, \sin t, \cos 2t\right>.\]
     \end{soln}
 \end{example}
 
