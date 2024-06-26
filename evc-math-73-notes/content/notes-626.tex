@@ -42,3 +42,26 @@ The addition of extra variables also makes evaluating these limits a bit differe
         \[\lim_{r \to 0} \frac{2r \cos r^{2}}{2r} = 1.\]
     \end{soln}
 \end{example}
+
+\begin{remark}
+    In the above limit we make use of l'Hopital's rule, which has no simple direct application to multiple variables. However, in cases like the one above when the limit can be reduced to a single variable (either through polar coordinates, searching along a path, or any other way), l'Hopital's rule is both applicable and incredibly useful.
+\end{remark}
+
+A substantial way to prove that a limit does not exist comes in the form of searching for limits along a path.
+
+\begin{example}
+    Find
+    \[\lim_{(x, y) \to (0, 0)} \frac{y^{2}}{x^{2} + y^{2}}.\]
+
+    \begin{soln}
+        After toying around with the limit for a while, you may find it difficult to approach a solution. So, let's evaluate the limit along a path. First, consider a modification of the function, which we denote $f(x, y)$, to $f(0, y)$. Along this path of $x = 0$, we see that
+        \[f(0, y) \to 1 \; \text{as} \; (x, y) \to (0, 0)\]
+        via a simplification of the fraction. However, in the case where we analyze $f(x, 0)$, we find that
+        \[f(x, 0) \to 0 \; \text{as} \; (x, y) \to (0, 0).\]
+        So, our previously stated definition of a limit fails and we conclude that the limit does not exist.
+    \end{soln}
+\end{example}
+
+\begin{remark}
+    The technique of path following is a nice heuristic for proving a limit does not exist. However, it cannot be used to prove the existance of a limit. Just because you check some paths and they happen to approach the same limit $L$ at a point $(x_{0}, y_{0})$, does not mean that other paths and directions approach the same point. The existance of a limit cannot be verified until it is proved in its entirety.
+\end{remark}
