@@ -40,36 +40,30 @@ With integrals defined for vector functions, we can begin to evaluate different 
     and the assumption that $\epsilon$ approches zero as stated at the front end of the proof.
 \end{remark}
 
-Now that we've explored the derivative, there is also the concept of curvature, which we denote by $\kappa$.
-
-\begin{theorem}
-    The curvature of a vector function $\vec{r}(t)$ is equal to
-    \[\kappa(t) = \frac{\magnitude{\ddvec{r}(t) \times \vec{r}\,^{\prime\prime}(t)}}{\magnitude{\ddvec{r}(t)}^{3}}.\]
-\end{theorem}
-
-Now, while $\kappa$ represents the magnitude of curvature, the direction in which the path is curving can be represented by a unit vector $\vec{N}(t)$.
+Like simpler functions explored in earlier calculus classes, the derivative itself does not explain the entirety of a curve`s path. Rather, it just tells us the direction. Aspects including how the path curves or even twists rely on more exploration.
 
 \begin{proposition}
-    The normal unit vector to $\vec{r}(t)$ at a point is defined by
+    The curvature $\kappa$ of a vector function $\vec{r}(t)$ is defined by
+    \[\kappa(t) = \frac{\magnitude{\ddvec{T}(t)}}{\magnitude{\ddvec{r}(t)}}.\]
+\end{proposition}
+
+As you may notice, the above is a scalar. If we want the direction, we must consider the normal unit vector of the path, $\vec{N}(t)$.
+
+\begin{proposition}
+    The normal unit vector $\vec{N}(t)$ to $\vec{r}(t)$ is defined by
     \[\vec{N}(t) = \frac{\ddvec{T}(t)}{\magnitude{\ddvec{T}(t)}}.\]
 \end{proposition}
 
-There is also the concept of a binormal unit vector, which is perpendicular to both $\vec{N}(t)$ and $\vec{T}(t)$.
+This vector is always perpendicular to $\vec{T}(t)$ and points in the direction of curvature. With the inclusion of one more vector, the binormal unit vector, we complete a reference frame called the Frenet frame that describes the behavior of a vector function in space.
 
 \begin{proposition}
-    The binormal vector of $\vec{r}(t)$ is defined by
+    The binormal unit vector $\vec{B}(t)$ of $\vec{r}(t)$ is defined by
     \[\vec{B}(t) = \vec{T}(t) \times \vec{N}(t).\]
 \end{proposition}
 
-As we get more into the weeds, there is the concept of torsion, which can be thought of as twisting, which we denote by $\tau(t)$.
+So far, most of the motion that has been described is similar to a three-dimensional application of derivatives and second derivatives, but the concept of torsion, or twisting, also arises.
 
 \begin{proposition}
-    The torsion of $\vec{r}(t)$ is equal to
-    \[\tau(t) = \frac{(\ddvec{r}(t) \times \vec{r}\,^{\prime\prime}(t)) \cdot \vec{r}\,^{\prime\prime\prime}(t)}{\magnitude{\ddvec{r}(t) \times \vec{r}\,^{\prime\prime}(t)}^{2}}.\]
+    The torsion $\tau(t)$ of $\vec{r}(t)$ is defined by
+    \[\tau(t) = -\vec{N}(t) \cdot \ddvec{B}(t).\]
 \end{proposition}
-
-Now, the above is overly complicated. In fact, there are other ways of writing $\tau(t)$ in terms of $\vec{B}(t)$, $\vec{N}(t)$, and $\vec{T}(t)$. To visualize this, I offer a proof of the above.
-
-\begin{proof}
-    Put proof stuff here.
-\end{proof}
