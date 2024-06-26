@@ -1,0 +1,75 @@
+\chapter{June 25, 2024}
+
+\section{Vector Functions Continued}
+
+Just as differentiation is defined on vector functions, integration is also defined.
+
+\begin{proposition}
+    For a vector function $\vec{r}(t) = \left<f(t), g(t), h(t)\right>$,
+    \[\int \vec{r}(t)dt = \left<\int f(t)dt, \int g(t)dt, \int h(t)dt\right>.\]
+\end{proposition}
+
+Namely, $\int \vec{r}(t)dt = \vec{R}(t)$ just as $\int f(t)dt = F(t)$ for any general scalar function $f$. The above definition also applies for definite integrals.
+
+\begin{proposition}
+    For a vector function $\vec{r}(t) = \left<f(t), g(t), h(t)\right>$,
+    \[\int_{a}^{b} \vec{r}(t)dt = \left<F(t) \biggr\vert_{a}^{b}, G(t) \biggr\vert_{a}^{b}, H(t) \biggr\vert_{a}^{b}\right>.\]
+\end{proposition}
+
+With integrals defined for vector functions, we can begin to evaluate different applications such as arclength.
+
+\begin{theorem}
+    Given a vector function $\vec{r}(t) = \left<f(t), g(t), h(t)\right>$ and two inputs $t_{1}$, $t_{2} \in D_{\vec{r}}$, the length of the curve between $\vec{r}(t_{1})$ and $\vec{r}(t_{2})$ is given by the formula
+    \[L = \int_{t_{1}}^{t_{2}} \sqrt{\left[f'(t)\right]^{2} + \left[g'(t)\right]^{2} + \left[h'(t)\right]^{2}}dt.\]
+\end{theorem}
+
+\begin{proof}
+    Consider an infinitesimally small step of length $\epsilon$ in the input $t$. We have that
+    \begin{align*}
+        L &= \magnitude{\vec{r}(t + \epsilon) - \vec{r}(t)} \\
+        &= \sqrt{\left[f(t + \epsilon) - f(t)\right]^{2} + \left[g(t + \epsilon) - g(t)\right]^{2} + \left[h(t + \epsilon) - h(t)\right]^{2}} \\
+        &= \sqrt{\left[\frac{f(t + \epsilon) - f(t)}{\epsilon}\right]^{2} + \left[\frac{g(t + \epsilon) - g(t)}{\epsilon}\right]^{2} + \left[\frac{h(t + \epsilon) - h(t)}{\epsilon}\right]^{2}} \cdot \epsilon \\
+        &= \sqrt{\left[f'(t)\right]^{2} + \left[g'(t)\right]^{2} + \left[h'(t)\right]^{2}}dt.
+    \end{align*}
+    Now, the length over a longer period is just an infinite sum, or integral, of the previous which completes the proof.
+\end{proof}
+
+\begin{remark}
+    The jump to the last step is made from the definition of a derivative from earlier courses that states
+    \[f'(t) = \lim_{\epsilon \to 0} \frac{f(t + \epsilon) - f(t)}{\epsilon}\]
+    and the assumption that $\epsilon$ approches zero as stated at the front end of the proof.
+\end{remark}
+
+Now that we've explored the derivative, there is also the concept of curvature, which we denote by $\kappa$.
+
+\begin{theorem}
+    The curvature of a vector function $\vec{r}(t)$ is equal to
+    \[\kappa(t) = \frac{\magnitude{\ddvec{r}(t) \times \vec{r}\,^{\prime\prime}(t)}}{\magnitude{\ddvec{r}(t)}^{3}}.\]
+\end{theorem}
+
+Now, while $\kappa$ represents the magnitude of curvature, the direction in which the path is curving can be represented by a unit vector $\vec{N}(t)$.
+
+\begin{proposition}
+    The normal unit vector to $\vec{r}(t)$ at a point is defined by
+    \[\vec{N}(t) = \frac{\ddvec{T}(t)}{\magnitude{\ddvec{T}(t)}}.\]
+\end{proposition}
+
+There is also the concept of a binormal unit vector, which is perpendicular to both $\vec{N}(t)$ and $\vec{T}(t)$.
+
+\begin{proposition}
+    The binormal vector of $\vec{r}(t)$ is defined by
+    \[\vec{B}(t) = \vec{T}(t) \times \vec{N}(t).\]
+\end{proposition}
+
+As we get more into the weeds, there is the concept of torsion, which can be thought of as twisting, which we denote by $\tau(t)$.
+
+\begin{proposition}
+    The torsion of $\vec{r}(t)$ is equal to
+    \[\tau(t) = \frac{(\ddvec{r}(t) \times \vec{r}\,^{\prime\prime}(t)) \cdot \vec{r}\,^{\prime\prime\prime}(t)}{\magnitude{\ddvec{r}(t) \times \vec{r}\,^{\prime\prime}(t)}^{2}}.\]
+\end{proposition}
+
+Now, the above is overly complicated. In fact, there are other ways of writing $\tau(t)$ in terms of $\vec{B}(t)$, $\vec{N}(t)$, and $\vec{T}(t)$. To visualize this, I offer a proof of the above.
+
+\begin{proof}
+    Put proof stuff here.
+\end{proof}
