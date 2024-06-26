@@ -1,0 +1,42 @@
+\chapter{June 26, 2024}
+
+\section{Functions in Multiple Variables}
+
+On top of vector functions and standard single-input, single-ouput functions, there are functions that can take multiple inputs (and produce multiple outputs, but that's not needed right now). We start by looking at the domain of such functions.
+
+\begin{example}
+    Find the domain of
+    \[f(x, y) = \frac{\sqrt{x^{2} + y^{2}}}{x - y}.\]
+
+    \begin{soln}
+        Now, finding domains in multiple variables often isn`t much more difficult than finding domains in one variable. Functions are still defined according to the same mathematical laws. As such, the denominator cannot equal to zero. So, the domain is
+        \[D_{f} = \{(x, y) \in \RR^{2} \mid x \neq y\}.\]
+    \end{soln}
+\end{example}
+
+Just as limits are defined with single-input functions, they are also useful for multi-input functions. However, they require a bit more than the standard limits we learned in earlier classes.
+
+\begin{definition}
+    Let $f : \RR^{2} \to \RR$ be a function of two variables. We say
+    \[\lim_{(x, y) \to (x_{0}, y_{0})} f(x, y) = L\]
+    if and only if for any $\epsilon > 0$ there exists $\delta > 0$ such that
+    \[\abs{f(x, y) - L} < \epsilon\]
+    whenever
+    \[0 < (x - x_{0})^{2} + (y - y_{0})^{2} < \delta.\]
+\end{definition}
+
+Behind the complicated notation, the definition is quite similar to the definition of a limit in $\RR^{2}$. The main difference is instead of the function approaching a value from the negative and positive direction, it must approach the value from a disk of points around the desired limit point.
+
+Evaluating these limits, though, is a bit different. Albeit, there is still a well-defined and straightforward way to do so in many cases.
+
+\begin{example}
+    Find
+    \[\lim_{(x, y) \to (0, 0)} \frac{\sin\left(x^{2} + y^{2}\right)}{x^{2} + y^{2}}.\]
+
+    \begin{soln}
+
+    \end{soln}
+\end{example}
+
+With these functions we introduce the concept of the partial derivative.
+
