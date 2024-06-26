@@ -2,7 +2,7 @@
 
 \section{Functions in Multiple Variables}
 
-On top of vector functions and standard single-input, single-ouput functions, there are functions that can take multiple inputs (and produce multiple outputs, but that's not needed right now). We start by looking at the domain of such functions.
+On top of vector functions and standard single-input, single-ouput functions, there are functions that can take multiple inputs (and produce multiple outputs, but that's not needed right now). These are called multivariable functions. We start by looking at the domain of such functions.
 
 \begin{example}
     Find the domain of
@@ -27,16 +27,18 @@ Just as limits are defined with single-input functions, they are also useful for
 
 Behind the complicated notation, the definition is quite similar to the definition of a limit in $\RR^{2}$. The main difference is instead of the function approaching a value from the negative and positive direction, it must approach the value from a disk of points around the desired limit point.
 
-Evaluating these limits, though, is a bit different. Albeit, there is still a well-defined and straightforward way to do so in many cases.
+The addition of extra variables also makes evaluating these limits a bit different. Albeit, there is still a well-defined and straightforward way to do so in many cases and many techniques from a single variable carry over. The below example explores a technique that arises only with a second variable.
 
 \begin{example}
     Find
     \[\lim_{(x, y) \to (0, 0)} \frac{\sin\left(x^{2} + y^{2}\right)}{x^{2} + y^{2}}.\]
 
     \begin{soln}
-
+        This solution involves the technique of converting frames to polar coordinates that is neither needed nor useful for single variable limits. By the definition of the transition we set
+        \[x^{2} + y^{2} = r^{2}\]
+        and subsitute to yield
+        \[\lim_{r \to 0} \frac{\sin r^{2}}{r^{2}}.\]
+        Now, by l`Hopital's rule our limit simplifies to
+        \[\lim_{r \to 0} \frac{2r \cos r^{2}}{2r} = 1.\]
     \end{soln}
 \end{example}
-
-With these functions we introduce the concept of the partial derivative.
-
