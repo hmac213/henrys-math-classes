@@ -20,7 +20,7 @@ With integrals defined for vector functions, we can begin to evaluate different 
 
 \begin{theorem}
     Given a vector function $\vec{r}(t) = \left<f(t), g(t), h(t)\right>$ and two inputs $t_{1}$, $t_{2} \in D_{\vec{r}}$, the length of the curve between $\vec{r}(t_{1})$ and $\vec{r}(t_{2})$ is given by the formula
-    \[L = \int_{t_{1}}^{t_{2}} \sqrt{\left[f'(t)\right]^{2} + \left[g'(t)\right]^{2} + \left[h'(t)\right]^{2}}dt.\]
+    \[L = \int_{t_{1}}^{t_{2}} \magnitude{\ddvec{r}(t)}dt.\]
 \end{theorem}
 
 \begin{proof}
@@ -40,11 +40,40 @@ With integrals defined for vector functions, we can begin to evaluate different 
     and the assumption that $\epsilon$ approches zero as stated at the front end of the proof.
 \end{remark}
 
-Like simpler functions explored in earlier calculus classes, the derivative itself does not explain the entirety of a curve`s path. Rather, it just tells us the direction. Aspects including how the path curves or even twists rely on more exploration.
+\begin{remark}
+    Often, you may see the notation $\vec{r}(s)$ rather than $\vec{r}(t)$. This $s$ variable is called the arc length parameterization and is satisfied when
+    \[s = \int_{0}^{s} \magnitude{\ddvec{r}(t)}dt.\]
+\end{remark}
+
+\begin{example}
+    Find the arc length parameterization of $\vec{r}(t) = \left<4\sin t, 4\cos t, 3t\right>$.
+
+    \begin{soln}
+        We have
+        \[\ddvec{r}(t) = \left<4\cos t, -4\sin t, 3\right>.\]
+        So, our arc length parameter $s$ is defined by
+        \begin{align*}
+            s &= \int_{0}^{t} \sqrt{16 \cos^{2}u + 16 \sin^{2}u + 9}du \\
+            &= \int_{0}^{t} 5du \\
+            &= 5t.
+        \end{align*}
+        Now, we substitute $t = \frac{s}{5}$ to get
+        \[\vec{r}(s) = \left<4\cos\left(\frac{s}{5}\right), 4\sin\left(\frac{s}{5}\right), \frac{3s}{5}\right>.\]
+    \end{soln}
+\end{example}
+
+Like simpler functions explored in earlier calculus classes, the derivative itself does not explain the entirety of a curve`s path. Rather, it just tells us the direction. Aspects including how the path curves or even twists rely on more exploration. We first define the unit tangent vector $\vec{T}(t)$.
+
+\begin{proposition}
+    The unit tangent vector of $\vec{r}(t)$ is given by the equation
+    \[\vec{T}(t) = \frac{\ddvec{r}(t)}{\magnitude{\ddvec{r}(t)}}.\]
+\end{proposition}
 
 \begin{proposition}
     The curvature $\kappa$ of a vector function $\vec{r}(t)$ is defined by
     \[\kappa(t) = \frac{\magnitude{\ddvec{T}(t)}}{\magnitude{\ddvec{r}(t)}}.\]
+    When the arc length parameterization is used rather than $t$,
+    \[\kappa(s) = \magnitude{\vec{r}\,^{\prime\prime}(s)}.\]
 \end{proposition}
 
 As you may notice, the above is a scalar. If we want the direction, we must consider the normal unit vector of the path, $\vec{N}(t)$.
@@ -65,5 +94,8 @@ So far, most of the motion that has been described is similar to a three-dimensi
 
 \begin{proposition}
     The torsion $\tau(t)$ of $\vec{r}(t)$ is defined by
-    \[\tau(t) = -\vec{N}(t) \cdot \ddvec{B}(t).\]
+    \[\tau(s) = -\ddvec{B}(s) \cdot \vec{N}(s),\]
+    or
+    \[\tau(t) = -\frac{\ddvec{B}(t) \cdot \vec{N}(t)}{\magnitude{\ddvec{r}(t)}}\]
+    when arc length parameterization is not used.
 \end{proposition}

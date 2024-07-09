@@ -1,0 +1,17 @@
+\chapter{July 9, 2024}
+
+\section{Double Integrals}
+
+Double integrals are a technique used to evaluate the volume under a surface, similar to how area is evaluated under a curve.
+
+\begin{example}
+    Evaluate $I$ when
+    \[I = \int_{1}^{3}\int_{-1}^{2}ye^{xy}dxdy.\]
+
+    \begin{soln}
+        First, we evaluate the inside integral, treating $y$ as a constant and get
+        \[I = \int_{1}^{3}\left[e^{xy}\biggr\rvert_{-1}^{2}\right]dy = \int_{1}^{3}e^{2y} - e^{-y}dy.\]
+        Now, we are left with a standard integral to get
+        \[I = \frac{1}{2}e^{2y} + e^{-y}\biggr\rvert_{1}^{3} = \frac{1}{2}\left(e^{6} - e^{2}\right) + e^{-3} - e^{-1}.\]
+    \end{soln}
+\end{example}

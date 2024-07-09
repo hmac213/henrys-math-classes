@@ -1,0 +1,77 @@
+\chapter{June 27, 2024}
+
+\section{Multivariable Functions Continued}
+
+Now, we proceed to define continuity for multivariable functions. For the sake of simplicity, we offer the definition of a function with two input variables (the most common type of function we will see), but the results are easily generalizable to further dimensions.
+
+\begin{definition}
+    A function $f(x, y)$ is continuous at $(a, b)$ if and only if
+    \[\lim_{(x, y) \to (a, b)} f(x, y) = f(a, b).\]
+\end{definition}
+
+We also have the notion of continuity in a region.
+
+\begin{definition}
+    A function $f(x, y)$ is continuous on $D$ if and only if
+    \[\lim_{(x, y) \to (a, b)} f(x, y) = f(a, b) \sforall (a, b) \in D.\]
+\end{definition}
+
+Consider the following example of determining whether a function is continuous.
+
+\begin{example}
+    Function $f(x, y)$ is defined as
+    \[f(x, y) = \begin{cases}
+        \frac{3x^{2}y}{x^{2} + y^{2}}, & (x, y) \neq (0, 0) \\
+        0, & (x, y) = (0, 0).
+    \end{cases}\]
+    Find whether $f$ is continuous at $(0, 0)$.
+
+    \begin{soln}
+        First, we bound our function to a given range. Since $x^{2} \leq x^{2} + y^{2}$,
+        \[\frac{3x^{2}\abs{y}}{x^{2} + y^{2}} \leq \frac{3x^{2}\abs{y}}{x^{2}} = 3\abs{y}.\]
+        It is clear to see that
+        \[\lim_{y \to 0} 3\abs{y} = 0,\]
+        which makes
+        \[\lim_{(x, y) \to (0, 0)} f(x, \abs{y}) = 0\]
+        as well. This, however, is equivalent to stating
+        \[\lim_{(x, y) \to (0, 0)} f(x, y) = 0.\]
+        So, we conclude that $f$ is continuous at $(0, 0)$.
+
+        \textbf{This proof kinda mid... I'll fix later.}
+
+        We complete this problem with an epsilon-delta proof, attempting to show that
+        \[\lim_{(x, y) \to (0, 0)} f(x, y) = 0.\]
+        In order to do so, we must show that for all $\epsilon > 0$, there exists $\delta > 0$ such that
+        \[\abs{\frac{3x^{2}y}{x^{2} + y^{2}}} < \epsilon \sforall (a, b) \in \{(x_{i}, y_{i}) \mid 0 < (x - x_{i})^{2} + (y - y_{i})^{2} < \delta\}.\]
+        We can now bound the ouputs of $f$ to a range defined by a simpler function by using the fact that $x^{2} \leq x^{2} + y^{2}$.
+        \[\abs{\frac{3x^{2}y}{x^{2} + y^{2}}} \leq \abs{\frac{3x^{2}y}{x^{2}}} = 3\abs{y}.\]
+        Now, we can equivalently show that
+        \[3\abs{y} < \epsilon.\]
+        Since
+        \[3\abs{y} \leq 3\left(x^{2} + y^{2}\right) < 3\delta,\]
+        \textbf{Finish}
+    \end{soln}
+\end{example}
+
+Now, we introduce the topic of partial derivatives, which is essentially taking the derivative with respect to one input variable in a multiavariable function, treating the others as constants.
+
+\begin{example}
+    Given a multivariable function $f(x, y) = xy + x^{2} - y^{2} + \cos x$, find its partial derivative with respect to $x$.
+
+    \begin{soln}
+        We treat $y$ as a constant and proceed to differentiate as if it was a single-input function.
+        \begin{align*}
+            \frac{\partial f}{\partial x} &= \frac{\partial}{\partial x}\left(xy + x^{2} - y^{2} + \cos x\right) \\
+            &= y + 2x - \sin x.
+        \end{align*}
+    \end{soln}
+\end{example}
+
+\begin{remark}
+    The notation $\frac{\partial f}{\partial x}$ is equivalent to the notation $f_{x}(x, y)$, which may also be used.
+\end{remark}
+
+\begin{proposition}
+    A function $f(x, y)$ is smooth at $(a, b)$ if and only if
+    \[f_{xy}(a, b) = f_{yx}(a, b).\]
+\end{proposition}

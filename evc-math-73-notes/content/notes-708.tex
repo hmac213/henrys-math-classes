@@ -1,0 +1,30 @@
+\chapter{July 8, 2024}
+
+\section{Lagrange Multipliers}
+
+If we have a function $f(x_{1}, x_{2}, \dots, x_{n})$ that we want to optimize under the constraint $g(x_{1}, x_{2}, \dots, x_{n}) = c$, we can do so using the Lagrangian function
+\[\mathcal{L}(x_{1}, x_{2}, \dots, x_{n}, \lambda) = f(x_{1}, x_{2}, \dots, x_{n}) - \lambda[g(x_{1}, x_{2}, \dots, x_{n}) - c].\]
+By equating the partial derivative with respect to each input variable to zero and solving the resulting system of equations, we can find input values yielding critical outputs.
+
+\begin{remark}
+    In other words, by taking the partial derivatives we set
+    \[\nabla f(x_{1}, x_{2}, \dots, x_{n}) = \lambda\nabla g(x_{1}, x_{2}, \dots, x_{n}).\]
+    This essentially means we want the gradient of $f$ to be parallel to the gradient of $g$.
+\end{remark}
+
+\begin{example}
+    Given the constraint
+    \[x + y = 1,\]
+    find the extrema of
+    \[z = 1 - x^{2} - y^{2}\]
+    \begin{soln}
+        We have
+        \[\mathcal{L}(x, y, \lambda) = 1 - x^{2} - y^{2} + \lambda(x + y - 1),\]
+        which means
+        \[\frac{\partial \mathcal{L}}{\partial x} = \lambda - 2x\]
+        \[\frac{\partial \mathcal{L}}{\partial y} = \lambda - 2y.\]
+        By equating to 0,
+        \[\lambda = 2x = 2y \implies x = y = \frac{1}{2}.\]
+        So, $z = \frac{1}{2}$ as well.
+    \end{soln}
+\end{example}

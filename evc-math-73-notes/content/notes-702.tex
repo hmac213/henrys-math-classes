@@ -1,0 +1,31 @@
+\chapter{July 2, 2024}
+
+\begin{example}
+    Find the absolute minimum and maximum of
+    \[f(x, y) = x^{2} + y^{2}\]
+    across all points $(x, y)$ such that
+    \[4x^{2} + y^{2} = 4.\]
+
+    \begin{soln}
+        First, we parameterize the variables in the second equation to
+        \[x = \cos\theta \; \text{and} \; y = 2\sin\theta.\]
+        Now,
+        \[f(x, y) = \cos^{2}\theta + 4\sin^{2}\theta = 1 + 3\sin^{2}\theta\]
+        for $0 \leq \theta < 2\pi$. We proceed to differentiate, which yields
+        \[f'(\theta) = 6\sin\theta\cos\theta,\]
+        that equals 0 when
+
+        {\centering
+        \begin{tabular}{c|c|c}
+            $\theta$ & $(x, y)$ & $f(x, y)$ \\
+            \hline
+            $0$ & $(1, 0)$ & 1 \\
+            $\frac{\pi}{2}$ & $(0, 2)$ & 4 \\
+            $\pi$ & $(-1, 0)$ & 1 \\
+            $\frac{3\pi}{2}$ & $(0, -2)$ & 4 \\
+        \end{tabular}
+        \par}
+
+        Since this curve has no endpoints, we see that the absolute maxima and minima must lie in the set of points above. So, where $f(x, y) = 4$ we have maxima and where $f(x, y) = 1$, we have minima.
+    \end{soln}
+\end{example}
