@@ -15,3 +15,66 @@ Double integrals are a technique used to evaluate the volume under a surface, si
         \[I = \frac{1}{2}e^{2y} + e^{-y}\biggr\rvert_{1}^{3} = \frac{1}{2}\left(e^{6} - e^{2}\right) + e^{-3} - e^{-1}.\]
     \end{soln}
 \end{example}
+
+\begin{remark}
+    A special case of the double integral arises whenever $f(x, y) = g(x) \cdot h(y)$. What results is
+    \[\int_{a}^{b}\int_{c}^{d}f(x, y)dydx = \int_{a}^{b}g(x)dx\int_{c}^{d}h(y)dy.\]
+\end{remark}
+
+Another formula similar to previous calculus classes comes up when searching for the average value of a function.
+
+\begin{theorem}
+    Given a funciton $f(x, y)$ and a region $R$,
+    \[f_{ave} = \frac{1}{A(R)}\iint\limits_{R}f(x, y)dA.\]
+\end{theorem}
+
+Now, consider an example for finding the volume under a surface throughout a triangular region.
+
+\begin{example}
+    Find the volume below $f(x, y) = xy$ in the triangular region $T$ defined by the points $(1, 1)$, $(4, 2)$, and $(3, 5)$.
+    
+    \begin{soln}
+        We start by defining what our integral is.
+        \[I = \iint\limits_{T}xydA.\]
+        Now, what we can do is convert from standard Cartesian coordinates to Barycentric coordinates, a system of weighted coordinates in terms of three variables $u$, $v$, and $w$. However, these variables represent weights, which means that $u + v + w = 1$ and we can eliminate $w$ by writing it as $1 - u - v$. So, our new integral is
+        \[I = \int_{0}^{1}\int_{0}^{1}x(u, v)y(u, v)J(u, v)dudv.\]
+        The $J(u, v)$ component is the Jacobean determinant, which is defined by
+        \[J(u, v) = \frac{\partial x}{\partial u}\frac{\partial y}{\partial v} - \frac{\partial x}{\partial v}\frac{\partial y}{\partial u}.\]
+        In the case of conversion to Barycentric coordinates, $J(u, v) = 2A$, where $A$ is the area of the triangle. In our case, the area of the triangle is 5, so $J(u, v) = 10$. Now, we must represent $x$ and $y$ in terms of $u$ and $v$. The fundamental definition of Barycentric coordinates is
+        \[P = uA + vB + wC\]
+        where $A$, $B$, and $C$ are the three points on the triangle. We can use this to complete our transformation and get
+        \[I = 10\int_{0}^{1}\int_{0}^{1}(ux_{1} + vx_{2} + (1 - u - v)x_{3})(uy_{1} + vy_{2} + (1 - u - v)y_{3})dudv.\]
+        Now, we plug in our known values and simplify to
+        \begin{align*}
+            I &= 10\int_{0}^{1}\int_{0}^{1}(3 - 2u + v)(5 - 4u - 3v)dudv \\
+            &= 10\int_{0}^{1}\int_{0}^{1}(15 + 8u^{2} - 3v^{2} - 22u - 4v + 2uv)dudv \\
+            &= 10\int_{0}^{1}\left[15u + \frac{8}{3}u^{3} - 3v^{2}u - 11u^{2} - 4uv + u^{2}v\right]_{0}^{1}dv \\
+            &= 10\left[15v + \frac{8}{3}v - v^{3} - 11v - 2v^{2} + \frac{1}{2}v^{2}\right]_{0}^{1} \\
+            &= \frac{125}{3}.
+        \end{align*}
+        \textbf{This is WRONG: FIX LATER}
+    \end{soln}
+\end{example}
+
+\begin{example}
+    Prove that the Jacobean determinant for a transformation from Cartesian to Barycentric coordinates is twice the area of the reference triangle.
+
+    \begin{proof}
+        We take the following transformation from and $(x, y)$ reference to a $(u, v)$ reference.
+        \[(x, y) \to (ux_{1} + vx_{2} + (1 - u - v)x_{3}, uy_{1} + vy_{2} + (1 - u - v)y_{3}).\]
+        Now, The Jacobean of this transformation is
+        \[J(u, v) = \det\begin{bmatrix}
+            \frac{\partial x}{\partial u} & \frac{\partial x}{\partial v} \\
+            \frac{\partial y}{\partial u} & \frac{\partial y}{\partial v}
+        \end{bmatrix} = \frac{\partial x}{\partial u}\frac{\partial y}{\partial v} - \frac{\partial x}{\partial v}\frac{\partial y}{\partial u}.\]
+        Now, we compute each partial derivative to get
+        \[\frac{\partial x}{\partial u} = x_{1} - x_{3}\]
+        \[\frac{\partial x}{\partial v} = x_{2} - x_{3}\]
+        \[\frac{\partial y}{\partial u} = y_{1} - y_{3}\]
+        \[\frac{\partial y}{\partial v} = y_{2} - y_{3}.\]
+        So,
+        \[J(u, v) = (x_{1} - x_{3})(y_{2} - y_{3}) - (x_{2} - x_{3})(y_{1} - y_{3}).\]
+        By the Shoelace Theorem, this is simply
+        \[J = 2A.\]
+    \end{proof}
+\end{example}
