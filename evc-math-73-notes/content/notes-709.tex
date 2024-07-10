@@ -21,6 +21,10 @@ Double integrals are a technique used to evaluate the volume under a surface, si
     \[\int_{a}^{b}\int_{c}^{d}f(x, y)dydx = \int_{a}^{b}g(x)dx\int_{c}^{d}h(y)dy.\]
 \end{remark}
 
+\begin{theorem}[Fubini's Theorem]
+    For the sake of this class, we keep the theorem simple. In general, the order of integration can be switched for double, triple, and higher dimensional integrals.
+\end{theorem}
+
 Another formula similar to previous calculus classes comes up when searching for the average value of a function.
 
 \begin{theorem}
@@ -28,31 +32,100 @@ Another formula similar to previous calculus classes comes up when searching for
     \[f_{ave} = \frac{1}{A(R)}\iint\limits_{R}f(x, y)dA.\]
 \end{theorem}
 
-Now, consider an example for finding the volume under a surface throughout a triangular region.
+It's easy to see that double integrals can quickly get messy as more complicated expressions make their way into the integrands. So, a trick often used is to transform the coordinate frame. To do this, a Jacobean matrix is used. Earlier in the class (I can't remember when) I took notes on Jacobean matrices, but here is their first real application.
+
+\begin{remark}
+    Recall that a Jacobean matrix offers the best approximation of a linear map created by a function $f$ at a certain point.
+\end{remark}
+
+What does this mean? Well, think of a standard derivative from earlier classes. Essentially what it did was define the slope of a function $f$ at a point, or more concretely, gave us a linear approximation of how $f$ would change at inputs near a specific point. The Jacobean is basically an extension of this concept into higher dimensions. 
+
+\begin{definition}
+    Given
+    \[I = \iint\limits_{D}f(x, y)dxdy\]
+    on some region $D$, the transformation
+    \[g(u, v) = (x(u, v), y(u, v))\]
+    can be applied to yield
+    \[I = \iint\limits_{D}f(g(u, v))\abs{J(u, v)}dudv\]
+    where $\abs{J(u, v)}$ is the absolute value of the Jacobean determinant of $g$.
+\end{definition}
+
+\begin{remark}
+    We take the absolute value of the Jacobean beause of the way that double integrals are defined. I don't exactly understand why, but just remember that.
+\end{remark}
+
+Here, I provide an example of how to find a Jacobean determinant with the simple example of polar coordinates.
 
 \begin{example}
-    Find the volume below $f(x, y) = xy$ in the triangular region $T$ defined by the points $(1, 1)$, $(4, 2)$, and $(3, 5)$.
+    Find the Jacobean determinant of the transformation from Cartesian to polar coordinates.
+
+    \begin{soln}
+        This transformation can be represented by the function
+        \[g(r, \theta) = (r\cos\theta, r\sin\theta).\]
+        So,
+        \[J(r, \theta) = \begin{vmatrix}
+            \frac{\partial x}{\partial r} & \frac{\partial x}{\partial \theta} \\
+            \frac{\partial y}{\partial r} & \frac{\partial y}{\partial \theta}
+        \end{vmatrix} = \begin{vmatrix}
+            \cos\theta & -r\sin\theta \\
+            \sin\theta & r\cos\theta
+        \end{vmatrix} = r.\]
+    \end{soln}
+\end{example}
+
+Now consider the following example where we use a transformation to make the evaluation of a double integral easier.
+
+\begin{example}
+    Evalaute
+    \[I = \iint\limits_{D}\sqrt{x^{2} + y^{2}}dxdy\]
+    on $D = \{(x, y) \in \RR^{2} \mid x^{2} + y^{2} \leq 1\}$.
+
+    \begin{soln}
+        By converting to polar coordinates, this integral becomes significantly easier. Consider the transformation
+        \[g(r, \theta) = (r\cos\theta, r\sin\theta)\]
+        that maps polar coordinates to cartesian coordinates. We can then rewrite $I$ as
+        \[I = \iint\limits_{D}r\abs{J(r, \theta)}d\theta dr.\]
+        In line with the previous example, we calculate the Jacobean determinant for this transformation to be $\abs{J(r, \theta)} = r$. Also, our region $D$ now simply becomes
+        \[D = [0, 1] \times [0, 2\pi).\]
+        So, the integral comes out to
+        \begin{align*}
+            I &= \int_{0}^{1}\int_{0}^{2\pi}r^{2}d\theta dr \\
+            &= \int_{0}^{1}\left[r^{2}\theta\right]_{0}^{2\pi}dr \\
+            &= \int_{0}^{1}\left[2\pi r^{2}\right]dr \\
+            &= \left[\frac{2}{3}\pi r^{3}\right]_{0}^{1} \\
+            &= \frac{2}{3}\pi.
+        \end{align*}
+    \end{soln}
+\end{example}
+
+Going between polar and rectangular coordinates is likely what you will see the most, but there are certainly other types of transformations that can be incredibly useful in certain situations. The example below illustrates one such example, albeit an advanced one that certainly goes beyond the scope of the course. In order to follow the example, consider the following definition.
+
+\begin{definition}[Barycentric Coordinates]
+    Barycentric Coordinates form a coordinate system centered around triangles. Specifically, a point $P(u, v, w)$ is written as
+    \[P = uA + vB + wC\]
+    where $A$, $B$, and $C$ are the vertices of some triangle in space.
+\end{definition}
+
+For the problem below, it is important to know that for any point $P$ inside $\triangle ABC$, $u + v + w = 1$ and $u, v, w \geq 0$.
+
+\begin{example}
+    Find the volume below $f(x, y) = x + y$ in the triangular region $T$ defined by the points $(1, 1)$, $(4, 2)$, and $(3, 5)$.
     
     \begin{soln}
-        We start by defining what our integral is.
-        \[I = \iint\limits_{T}xydA.\]
-        Now, what we can do is convert from standard Cartesian coordinates to Barycentric coordinates, a system of weighted coordinates in terms of three variables $u$, $v$, and $w$. However, these variables represent weights, which means that $u + v + w = 1$ and we can eliminate $w$ by writing it as $1 - u - v$. So, our new integral is
-        \[I = \int_{0}^{1}\int_{0}^{1}x(u, v)y(u, v)J(u, v)dudv.\]
-        The $J(u, v)$ component is the Jacobean determinant, which is defined by
-        \[J(u, v) = \frac{\partial x}{\partial u}\frac{\partial y}{\partial v} - \frac{\partial x}{\partial v}\frac{\partial y}{\partial u}.\]
-        In the case of conversion to Barycentric coordinates, $J(u, v) = 2A$, where $A$ is the area of the triangle. In our case, the area of the triangle is 5, so $J(u, v) = 10$. Now, we must represent $x$ and $y$ in terms of $u$ and $v$. The fundamental definition of Barycentric coordinates is
-        \[P = uA + vB + wC\]
-        where $A$, $B$, and $C$ are the three points on the triangle. We can use this to complete our transformation and get
-        \[I = 10\int_{0}^{1}\int_{0}^{1}(ux_{1} + vx_{2} + (1 - u - v)x_{3})(uy_{1} + vy_{2} + (1 - u - v)y_{3})dudv.\]
-        Now, we plug in our known values and simplify to
+        Now, when dealing in Cartesian coordinates, this integral isn't all that difficult. However, it is tedious due to the requirement that you must split $T$ into sub-regions $T_{k}$. By converting to Barycentric coordinates, we eliminate this requirement. A transformation, though, requires a conversion from a two-variable coordinate system to another two-variable coordinate system. Since Barycentric coordinates have three components, we use $u + v + w = 1$ to eliminate $w$ by representing it as $w = 1 - u - v$. Now, our transformation $g$ is
+        \[g(u, v) = (ux_{1} + vx_{2} + (1 - u - v)x_{3}, uy_{1} + vy_{2} + (1 - u - v)y_{3}).\]
+        The points $(x_{k}, y_{k})$ represent the vertices of the triangle, so we rewrite $g$ as
+        \[g(u, v) = (3 - 2u + v, 5 - 4u - 3v).\]
+        We proceed to define our bounds of integration. From our conditions on Barycentric coordinates, we must have that $0 \leq u \leq 1$, making $0 \leq v \leq 1 - u$. We now arrive at
+        \[I = \int_{0}^{1}\int_{0}^{1 - u}(8 - 6u - 2v)\abs{J(u, v)}dvdu.\]
+        By simple calculation, we arrive at $\abs{J(u, v)} = 10$ and have
         \begin{align*}
-            I &= 10\int_{0}^{1}\int_{0}^{1}(3 - 2u + v)(5 - 4u - 3v)dudv \\
-            &= 10\int_{0}^{1}\int_{0}^{1}(15 + 8u^{2} - 3v^{2} - 22u - 4v + 2uv)dudv \\
-            &= 10\int_{0}^{1}\left[15u + \frac{8}{3}u^{3} - 3v^{2}u - 11u^{2} - 4uv + u^{2}v\right]_{0}^{1}dv \\
-            &= 10\left[15v + \frac{8}{3}v - v^{3} - 11v - 2v^{2} + \frac{1}{2}v^{2}\right]_{0}^{1} \\
-            &= \frac{125}{3}.
+            I &= 10\int_{0}^{1}\left[8v - 6uv - v^{2}\right]_{0}^{1 - u}du \\
+            &= 10\int_{0}^{1}(7u^{2} - 14u + 7)du \\
+            &= 70\int_{0}^{1}(u - 1)^{2}du \\
+            &= 70\left[\frac{(u - 1)^{3}}{3}\right]_{0}^{1} \\
+            &= \frac{70}{3}.
         \end{align*}
-        \textbf{This is WRONG: FIX LATER}
     \end{soln}
 \end{example}
 
@@ -60,21 +133,16 @@ Now, consider an example for finding the volume under a surface throughout a tri
     Prove that the Jacobean determinant for a transformation from Cartesian to Barycentric coordinates is twice the area of the reference triangle.
 
     \begin{proof}
-        We take the following transformation from and $(x, y)$ reference to a $(u, v)$ reference.
-        \[(x, y) \to (ux_{1} + vx_{2} + (1 - u - v)x_{3}, uy_{1} + vy_{2} + (1 - u - v)y_{3}).\]
-        Now, The Jacobean of this transformation is
-        \[J(u, v) = \det\begin{bmatrix}
+        As shown in the previous example, our transformation is
+        \[g(u, v) = (ux_{1} + vx_{2} + (1 - u - v)x_{3}, uy_{1} + vy_{2} + (1 - u - v)y_{3}).\]
+        We then calculate the Jacobean of this transformation to be
+        \[J(u, v) = \begin{vmatrix}
             \frac{\partial x}{\partial u} & \frac{\partial x}{\partial v} \\
             \frac{\partial y}{\partial u} & \frac{\partial y}{\partial v}
-        \end{bmatrix} = \frac{\partial x}{\partial u}\frac{\partial y}{\partial v} - \frac{\partial x}{\partial v}\frac{\partial y}{\partial u}.\]
-        Now, we compute each partial derivative to get
-        \[\frac{\partial x}{\partial u} = x_{1} - x_{3}\]
-        \[\frac{\partial x}{\partial v} = x_{2} - x_{3}\]
-        \[\frac{\partial y}{\partial u} = y_{1} - y_{3}\]
-        \[\frac{\partial y}{\partial v} = y_{2} - y_{3}.\]
-        So,
-        \[J(u, v) = (x_{1} - x_{3})(y_{2} - y_{3}) - (x_{2} - x_{3})(y_{1} - y_{3}).\]
-        By the Shoelace Theorem, this is simply
-        \[J = 2A.\]
+        \end{vmatrix} = \begin{vmatrix}
+            x_{1} - x_{3} & x_{2} - x_{3} \\
+            y_{1} - y_{3} & y_{2} - y_{3}
+        \end{vmatrix}.\]
+        This is simply the area of a parallelogram with sides going from $(x_{2}, y_{2})$ to $(x_{1}, y_{1})$ and $(x_{3}, y_{3})$, or twice the area of the triangle defined by the three points.
     \end{proof}
 \end{example}
