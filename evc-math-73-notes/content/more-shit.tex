@@ -1,0 +1,57 @@
+\chapter{I was Probably Watching Reels when We Learned This}
+
+\section{Line Integrals}
+
+Now we go over line integrals in general, of which there are two types: line integrals of scalar fields and line integrals of vector fields. Let us start with scalar fields.
+
+\begin{definition}
+    The line integral of $f(x, y)$ along $C$ is defined by
+    \[\oint_{C}f(x, y)ds\]
+    where $ds$ is the arclength parameterization defined by
+    \[ds = \sqrt{\left(\frac{dx}{dt}\right)^{2} + \left(\frac{dy}{dt}\right)^{2}}dt.\]
+\end{definition}
+
+For vector fields, we have the following.
+
+\begin{definition}
+    The line integral of $\vec{F}(x, y, z)$ along $C$ is
+    \[\oint_{C}\vec{F} \cdot d\vec{r} = \int_{a}^{b}\vec{F}(\vec{r}(t))\ddvec{r}(t)dt\]
+    where $t$ ranges from $a$ to $b$.
+\end{definition}
+
+Say $\vec{F}(x, y, z) = \left<P(x, y, z), Q(x, y, z), R(x, y, z)\right>$. The line integral above can also be expressed in another common way.
+
+\begin{corollary}
+    The line integral of $\vec{F}(x, y, z)$ along $C$ is
+    \[\oint_{C}\vec{F} \cdot d\vec{r} = \oint_{C}\left(Pdx + Qdy + Rdz\right)\]
+\end{corollary}
+
+The above is shorthand for the sum of the respective components of the input of $\vec{F}$.
+
+\section{Green's Theorem}
+
+Here, I offer the statement and an elementary proof of Green's Theorem.
+
+\begin{theorem}[Green's Theorem]
+    For a region $D$ bounded by a piecewise smooth and positively oriented curve $C$ in a plane, if $M$ and $N$ are functions of $(x, y)$ defined on an open region containing $D$ and both have continuous first order partial derivatives, then
+    \[\oint_{C}(Mdx + Ndy) = \iint\limits_{D}\left(\frac{\partial N}{\partial x} - \frac{\partial M}{\partial y}\right)dxdy.\]
+\end{theorem}
+
+\begin{proof}
+    We will first prove the validity of Green's theorem on a rectangular region, which we say has arbitrary vertices at $(a, c)$, $(a, d)$, $(b, c)$, and $(b, d)$ where $a < b$ and $c < d$. Starting in the bottom left corner and proceeding counterclockwise, we label the four paths of the rectangle $\ell_{1}$, $\ell_{2}$, $\ell_{3}$, and $\ell_{4}$. First looking at the left side of the theorem statement, we have
+    \[\oint_{C}(Mdx + Ndy) = \sum_{k = 1}^{4}\int_{\ell_{k}}(Mdx + Ndy).\]
+    Since, $\ell_{1}$ and $\ell_{3}$ are horizontal and $\ell_{2}$ and $\ell_{4}$ are vertical, we note that $dy$ and $dx$ are zero, respectively, in each case. A simplification and an insertion of integration bounds yields
+    \begin{align*}
+        \oint_{C}(Mdx + Ndy) &= \int_{a}^{b}M(x, c)dx + \int_{c}^{d}N(b, y)dy + \int_{b}^{a}M(x, d)dx + \int_{d}^{c}N(a, y)dy \\
+        &= \int_{a}^{b}M(x, c) - M(x, d)dx - \int_{c}^{d}N(a, y) - N(b, y)dy.
+    \end{align*}
+    Now, we look at the right side. By direct calculation,
+    \begin{align*}
+        \iint\limits_{D}\left(\frac{\partial N}{\partial x} - \frac{\partial M}{\partial y}\right)dxdy &= \int_{c}^{d}\int_{a}^{b}\left(\frac{\partial N}{\partial x} - \frac{\partial M}{\partial y}\right)dxdy \\
+        &= \int_{c}^{d}\int_{a}^{b}\frac{\partial N}{\partial x}dxdy - \int_{a}^{b}\int_{c}^{d}\frac{\partial M}{\partial y}dydx \\
+        &= \int_{c}^{d} N(x, y) \biggr\rvert_{x = a}^{x = b} dy - \int_{a}^{b} M(x, y) \biggr\rvert_{y = c}^{y = d} dx \\
+        &= \int_{c}^{d} N(b, y) - N(a, y) dy - \int_{a}^{b} M(x, d) - M(x, c) dx.
+    \end{align*}
+    As we have succesfully shown the left and right-hand sides to be equal, we have proven Green's theorem for a rectangular region. When we place two of these regions side-by-side, the integral over the shared edge evaluates to zero because the paths are antiparallel and perfectly overlapping.
+    So, only edges on the border (ie. not touching another rectangle) are evaluated to non-zero quantities. Since any surface can be approximated with an infinitely packed collection of rectangles, we see that the case of a rectangle easily generalizes to any piecewise smooth plane curve.
+\end{proof}

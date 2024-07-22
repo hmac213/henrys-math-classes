@@ -4,6 +4,15 @@
 \usepackage{scrhack}
 \usepackage{tabularx}
 \usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{subcaption}
+\usepackage{graphicx}  
+\usepackage{epigraph}
+
+\renewcommand{\epigraphsize}{\normalsize\itshape}
+\renewcommand{\epigraphrule}{0pt}
+\renewcommand{\epigraphflush}{center}
+\setlength{\epigraphwidth}{0.8\textwidth}
 
 \newcommand{\ddvec}[1]{\vec{#1}\,^{\prime}}
 \newcommand{\sforall}{\; \forall \;} % forall with spaces around it.
@@ -19,6 +28,18 @@
 
 \pagebreak
 
+\vspace*{\fill}
+\begin{epigraphs}
+    \qitem{You probably won't get much out of this\ldots\; in fact, everything here is either bullshit, incomplete, or just a whole buncha yap.}{\normalfont -- Your's Truly}
+\end{epigraphs}
+\vspace*{\fill}
+
+\pagebreak
+
+\tableofcontents
+
+\pagebreak
+
 \include{content/notes-617}
 \include{content/notes-618}
 \include{content/notes-620}
@@ -31,5 +52,6 @@
 \include{content/notes-708}
 \include{content/notes-709}
 \include{content/notes-710}
+\include{content/more-shit}
 
 \end{document}
