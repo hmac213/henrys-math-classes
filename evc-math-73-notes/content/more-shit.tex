@@ -15,7 +15,7 @@ For vector fields, we have the following.
 
 \begin{definition}
     The line integral of $\vec{F}(x, y, z)$ along $C$ is
-    \[\oint_{C}\vec{F} \cdot d\vec{r} = \int_{a}^{b}\vec{F}(\vec{r}(t))\ddvec{r}(t)dt\]
+    \[\oint_{C}\vec{F} \cdot d\vec{r} = \int_{a}^{b}\vec{F}(\vec{r}(t)) \cdot \ddvec{r}(t)dt\]
     where $t$ ranges from $a$ to $b$.
 \end{definition}
 
@@ -26,11 +26,23 @@ Say $\vec{F}(x, y, z) = \left<P(x, y, z), Q(x, y, z), R(x, y, z)\right>$. The li
     \[\oint_{C}\vec{F} \cdot d\vec{r} = \oint_{C}\left(Pdx + Qdy + Rdz\right)\]
 \end{corollary}
 
-The above is shorthand for the sum of the respective components of the input of $\vec{F}$.
+The above is shorthand for the sum of the respective components of the input of $\vec{F}$. When it comes to evaluating line integrals, there are several routes that one can choose. However, some are significantly easier than others. When applicable, perhaps one of the most useful methods is the fundamental theorem of line integrals.
 
-\section{Green's Theorem}
+\begin{theorem}[Fundamental Theorem of Line Integrals]
+    With a piecewise smooth curve $C$ given by $\vec{r}(t)$ for $a \leq t \leq b$, take a function $f$ with gradient vector $\nabla f$ that is continuous on $C$. Then,
+    \[\oint_{C}\nabla f \cdot d\vec{r} = f(\vec{r}(b)) - f(\vec{r}(a)).\]
+\end{theorem}
 
-Here, I offer the statement and an elementary proof of Green's Theorem.
+\begin{remark}
+    The above theorem is only applicable when the integrand $\vec{F}$ can be written as $\vec{F} = \nabla f$. This is the case when $\vec{F}$ is a conservative vector field.
+\end{remark}
+
+\begin{proposition}
+    A function $\vec{F}(x, y, z)$ is conservative if and only if
+    \[\mathrm{curl}\vec{F} = 0.\]
+\end{proposition}
+
+So, when the above conditions are not met, there are a few other routes to take. One of which is Green's Theorem. Here, I offer the statement and an elementary proof of Green's Theorem.
 
 \begin{theorem}[Green's Theorem]
     For a region $D$ bounded by a piecewise smooth and positively oriented curve $C$ in a plane, if $M$ and $N$ are functions of $(x, y)$ defined on an open region containing $D$ and both have continuous first order partial derivatives, then
@@ -52,6 +64,50 @@ Here, I offer the statement and an elementary proof of Green's Theorem.
         &= \int_{c}^{d} N(x, y) \biggr\rvert_{x = a}^{x = b} dy - \int_{a}^{b} M(x, y) \biggr\rvert_{y = c}^{y = d} dx \\
         &= \int_{c}^{d} N(b, y) - N(a, y) dy - \int_{a}^{b} M(x, d) - M(x, c) dx.
     \end{align*}
-    As we have succesfully shown the left and right-hand sides to be equal, we have proven Green's theorem for a rectangular region. When we place two of these regions side-by-side, the integral over the shared edge evaluates to zero because the paths are antiparallel and perfectly overlapping.
-    So, only edges on the border (ie. not touching another rectangle) are evaluated to non-zero quantities. Since any surface can be approximated with an infinitely packed collection of rectangles, we see that the case of a rectangle easily generalizes to any piecewise smooth plane curve.
+    As we have succesfully shown the left and right-hand sides to be equal, we have proven Green's theorem for a rectangular region. Now we proceed to generalize to any plane surface. Recall that
+    \[\oint_{C}f(x, y)dxdy = -\oint_{-C}f(x, y)dxdy.\]
+    This means that two antiparallel and perfectly overlapping paths will have line integrals that cancel each other out when they are summed. As we place rectangular regions side-by-side to compose a larger region, the overlapping borders are antiparallel, and thus, need not be considered when evaluating total curl. The only paths necessary are those that lie on the boundary region because they do not have any opposite path to cancel them out. This means that Green's theorem holds for any region that can be comprised of smaller rectangles which, as calculus has time and time again shown, is any plane surface.
 \end{proof}
+
+When we have a surface in three dimensions, we can use another theorem known as Stokes's theorem, which is stated and proven below.
+
+\begin{theorem}[Stokes's Theorem]
+    Let $S$ be a smooth, oriented surface with a smooth, closed boundary curve $\partial S$. For $\vec{F}$ with continuous first order partials on an open region containing $S$,
+    \[\iint\limits_{S}\left(\nabla \times \vec{F}\right) \cdot d\vec{S} = \oint_{\partial S}\vec{F} \cdot d\vec{r}.\]
+\end{theorem}
+
+\begin{proof}
+    Since any vector field in $\RR^{3}$ can generally be written as the sum of component vectors, we must only prove Stokes's theorem in one of these component directions, which without loss of generality, we choose to be $\bvec{k}$ for $\bvec{F} = P\bvec{i} + Q\bvec{j} + R\bvec{k}$. Using the summation properties of integration, we will have then constructed a valid general proof of the theorem. With that said, we wish to show
+    \[\iint\limits_{S}\left(\nabla \times R\bvec{k}\right)d\bvec{S} = \oint_{\partial S}R(x, y, z)dz.\]
+\end{proof}
+
+\begin{remark}
+    The notation $\partial S$ simply denotes the boundary of $S$ and is a stylistic choice often used in the statement of Stokes's theorem.
+\end{remark}
+
+\begin{remark}
+    I also have no idea if the professor will even cover Stokes's theorem, so don't worry about it too much.
+\end{remark}
+
+Now for closed curves, you should be set; one of the above methods will most certainly give you an answer in a quicker manner than direct evaluation. But sometimes, direct evaluation is necessary when open curves in non-conservative vector fields are involved. Consider the following example.
+
+\begin{example}
+    Given a curve $C$ defined by $\vec{r}(t) = \left<t, 2t, 3t\right>$ for $\sqrt{\frac{\pi}{2}} \leq t \leq \sqrt{\frac{3\pi}{2}}$ and a function $\vec{F}(x, y, z) = \left<x\sin yz, y\sin xz, z\sin xy\right>$, evaluate
+    \[\oint_{C}\vec{F} \cdot d\vec{r}.\]
+
+    \begin{soln}
+        From above, we have
+        \[\oint_{C}\vec{F} \cdot d\vec{r} = \int_{\sqrt{\frac{\pi}{2}}}^{\sqrt{\frac{3\pi}{2}}}\vec{F}(\vec{r}(t)) \cdot \ddvec{r}(t)dt.\]
+        By direct evaluation
+        \[\vec{F}(\vec{r}(t)) = \left<t\sin(6t^{2}), 2t\sin(3t^{2}), 3t\sin(2t^{2})\right>\]
+        and
+        \[\ddvec{r}(t) = \left<12t^{2}\cos(6t^{2}), 12t^{2}\cos(3t^{2}), 12t^{2}\cos(2t^{2})\right>.\]
+        So,
+        \[\vec{F}(\vec{r}(t)) \cdot \ddvec{r}(t) = 12t^{3}\left(\sin(6t^{2})\cos(6t^{2}) + \sin(3t^{2})\cos(3t^{2}) + \sin(2t^{2})\cos(2t^{2})\right)\]
+        which makes
+        \begin{align*}
+            \oint_{C}\vec{F} \cdot d\vec{r} &= \int_{\sqrt{\frac{\pi}{2}}}^{\sqrt{\frac{3\pi}{2}}}12t^{3}\left(\sin(6t^{2})\cos(6t^{2}) + \sin(3t^{2})\cos(3t^{2}) + \sin(2t^{2})\cos(2t^{2})\right)dt \\
+            &= \int_{\sqrt{\frac{\pi}{2}}}^{\sqrt{\frac{3\pi}{2}}}6t^{3}\left(\sin(12t^{2}) + \sin(6t^{2}) + \sin(4t^{2})\right)dt
+        \end{align*}
+    \end{soln}
+\end{example}
