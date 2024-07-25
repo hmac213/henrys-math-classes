@@ -1,4 +1,24 @@
-\chapter{I was Probably Watching Reels when We Learned This}
+\chapter{I was Probably Watching Reels when We Learned This but I'm P Sure It's Important}
+
+\section{TLDR}
+
+If you don't want to read this whole section in which I spilled pretty much everything I've learned, here is a TLDR.
+
+Things to try when evaluating a line integral (starting with the least tedious):
+
+\textbf{Fundamental Theorem of Line Integration:} This is your friend; if you can use it, you should. Remember it only works for conservative vector fields.
+
+\textbf{Green's Theorem:} If the surface is a plane surface and the boundary curve is closed, then Green's theorem is very useful.
+
+\textbf{Direct Evaluation:} Not always pretty, but can get the job done in most cases. This will most likely be needed when the curve is open.
+
+Things to try when evaluating a surface integral:
+
+\textbf{Gauss's Divergence Theorem:} If you know it, I recommend using it. It is good in many cases, but only when the surface is closed.
+
+\textbf{Stokes's Theorem:} This can turn your surface integral into a line integral, which may be easier to evaluate. This only works when the surface has a boundary curve (Stokes's theorem can also be used to turn a line integral into a surface integral if you so desire).
+
+\textbf{Direct Evaluation:} Parametrize it or let $z = g(x, y)$ and hope for the best.
 
 \section{Line Integrals}
 
@@ -7,39 +27,39 @@ Now we go over line integrals in general, of which there are two types: line int
 \begin{definition}
     The line integral of $f(x, y)$ along $C$ is defined by
     \[\oint_{C}f(x, y)ds\]
-    where $ds$ is the arclength parameterization defined by
+    where $ds$ is the arclength parametrization defined by
     \[ds = \sqrt{\left(\frac{dx}{dt}\right)^{2} + \left(\frac{dy}{dt}\right)^{2}}dt.\]
 \end{definition}
 
 For vector fields, we have the following.
 
 \begin{definition}
-    The line integral of $\vec{F}(x, y, z)$ along $C$ is
-    \[\oint_{C}\vec{F} \cdot d\vec{r} = \int_{a}^{b}\vec{F}(\vec{r}(t)) \cdot \ddvec{r}(t)dt\]
+    The line integral of $\bvec{F}(x, y, z)$ along $C$ is
+    \[\oint_{C}\bvec{F} \cdot d\bvec{r} = \int_{a}^{b}\bvec{F}(\bvec{r}(t)) \cdot \bvec{r}'(t)dt\]
     where $t$ ranges from $a$ to $b$.
 \end{definition}
 
-Say $\vec{F}(x, y, z) = \left<P(x, y, z), Q(x, y, z), R(x, y, z)\right>$. The line integral above can also be expressed in another common way.
+Say $\bvec{F}(x, y, z) = \left<P(x, y, z), Q(x, y, z), R(x, y, z)\right>$. The line integral above can also be expressed in another common way.
 
 \begin{corollary}
-    The line integral of $\vec{F}(x, y, z)$ along $C$ is
-    \[\oint_{C}\vec{F} \cdot d\vec{r} = \oint_{C}\left(Pdx + Qdy + Rdz\right)\]
+    The line integral of $\bvec{F}(x, y, z)$ along $C$ is
+    \[\oint_{C}\bvec{F} \cdot d\bvec{r} = \oint_{C}\left(Pdx + Qdy + Rdz\right)\]
 \end{corollary}
 
-The above is shorthand for the sum of the respective components of the input of $\vec{F}$. When it comes to evaluating line integrals, there are several routes that one can choose. However, some are significantly easier than others. When applicable, perhaps one of the most useful methods is the fundamental theorem of line integrals.
+The above is shorthand for the sum of the respective components of the input of $\bvec{F}$. When it comes to evaluating line integrals, there are several routes that one can choose. However, some are significantly easier than others. When applicable, perhaps one of the most useful methods is the fundamental theorem of line integrals.
 
 \begin{theorem}[Fundamental Theorem of Line Integrals]
-    With a piecewise smooth curve $C$ given by $\vec{r}(t)$ for $a \leq t \leq b$, take a function $f$ with gradient vector $\nabla f$ that is continuous on $C$. Then,
-    \[\oint_{C}\nabla f \cdot d\vec{r} = f(\vec{r}(b)) - f(\vec{r}(a)).\]
+    With a piecewise smooth curve $C$ given by $\bvec{r}(t)$ for $a \leq t \leq b$, take a function $f$ with gradient vector $\nabla f$ that is continuous on $C$. Then,
+    \[\oint_{C}\nabla f \cdot d\bvec{r} = f(\bvec{r}(b)) - f(\bvec{r}(a)).\]
 \end{theorem}
 
 \begin{remark}
-    The above theorem is only applicable when the integrand $\vec{F}$ can be written as $\vec{F} = \nabla f$. This is the case when $\vec{F}$ is a conservative vector field.
+    The above theorem is only applicable when the integrand $\bvec{F}$ can be written as $\bvec{F} = \nabla f$. This is the case when $\bvec{F}$ is a conservative vector field.
 \end{remark}
 
 \begin{proposition}
-    A function $\vec{F}(x, y, z)$ is conservative if and only if
-    \[\mathrm{curl}\vec{F} = 0.\]
+    A function $\bvec{F}(x, y, z)$ is conservative if and only if
+    \[\curl\bvec{F} = 0.\]
 \end{proposition}
 
 So, when the above conditions are not met, there are a few other routes to take. One of which is Green's Theorem. Here, I offer the statement and an elementary proof of Green's Theorem.
@@ -69,45 +89,148 @@ So, when the above conditions are not met, there are a few other routes to take.
     This means that two antiparallel and perfectly overlapping paths will have line integrals that cancel each other out when they are summed. As we place rectangular regions side-by-side to compose a larger region, the overlapping borders are antiparallel, and thus, need not be considered when evaluating total curl. The only paths necessary are those that lie on the boundary region because they do not have any opposite path to cancel them out. This means that Green's theorem holds for any region that can be comprised of smaller rectangles which, as calculus has time and time again shown, is any plane surface.
 \end{proof}
 
-When we have a surface in three dimensions, we can use another theorem known as Stokes's theorem, which is stated and proven below.
+\section{Surface Integrals}
+
+Now, we introduce surface integrals which, like line integrals, have slightly different procedures for vector and scalar fields. In both cases, however, we utilize parametrization, defining the surface $S$ by $\bvec{r}(u, v) = \left<x(u, v), y(u, v), y(u, v)\right>$.
+
+\begin{definition}
+    Given a function $f(x, y, z)$ defined on a surface $S$,
+    \[\iint\limits_{S}f(x, y, z)dS = \iint\limits_{D}f(\bvec{r}(u, v))\magnitude{r_{u} \times r_{v}}dA.\]
+\end{definition}
+
+Now consider the following example.
+
+\begin{example}
+    Evaluate
+    \[\iint\limits_{S}6xydS\]
+    where $S$ is the portion of the plane $x + y + z = 1$ lying in the first octant.
+
+    \begin{soln}
+        Instead of parametrizing with respect to $(u, v)$, we replace $z$ with $g(x, y) = 1 - x - y$. The resulting double integral is
+        \[\iint\limits_{S}6xydS = \iint\limits_{D}6xy\magnitude{g_{x} \times g_{y}}dA.\]
+        Now, we calculate
+        \[\magnitude{g_{x} \times g_{y}} = \sqrt{3}.\]
+        Since we have removed $z$ from the parametrization, we inspect the new region $D$ traced by $x$ and $y$. Namely, we are left with
+        \[0 \leq x \leq 1 \;\; \text{and} \;\; 0 \leq y \leq 1 - x.\]
+        We finish with a direct evaluation of the resulting double integral.
+        \begin{align*}
+            \iint\limits_{S}6xydS &= 6\sqrt{3}\int_{0}^{1}\int_{0}^{1 - x}xydydx \\
+            &= 6\sqrt{3}\int_{0}^{1}\frac{xy^{2}}{2}\biggr\rvert_{0}^{1 - x}dx \\
+            &= 6\sqrt{3}\int_{0}^{1}\frac{x - 2x^{2} + x^{3}}{2}dx \\
+            &= 6\sqrt{3}\left(\frac{x^{2}}{4} - \frac{x^{3}}{3} + \frac{x^{4}}{8}\right)\biggr\rvert_{0}^{1} \\
+            &= 4\sqrt{3}.
+        \end{align*}
+    \end{soln}
+\end{example}
+
+For a vector field, the definition is similar.
+
+\begin{definition}
+    Given a function $\bvec{F}(x, y, z)$ defined on a surface $S$,
+    \[\iint\limits_{S}\bvec{F} \cdot d\bvec{S} = \iint\limits_{D}\bvec{F} \cdot (r_{u} \times r_{v})dA.\]
+\end{definition}
+
+\begin{remark}
+    There are a few other ways to write the above integral. The most common are
+    \[\iint\limits_{S}\bvec{F} \cdot d\bvec{S} = \iint\limits_{S}\bvec{F} \cdot \bvec{n}dS,\]
+    which transforms the integral into the surface integral over a scalar field by taking the dot product with the unit normal vector, and
+    \[\iint\limits_{S}\bvec{F} \cdot d\bvec{S} = \iint\limits_{D}(-Pg_{x} - Qg_{y} + R)dA\]
+    when $\bvec{F}(x, y, z) = \left<P, Q, R\right>$ and $z = g(x, y)$, similar to the example above.
+\end{remark}
+
+\begin{problem}
+    Evaluate
+    \[\iint\limits_{S}\bvec{F} \cdot d\bvec{S}\]
+    where $\bvec{F} = \left<0, y, -z\right>$ and
+    \[S = \{(x, y, z) \mid y = x^{2} + z^{2} \; \text{for} \; 0 \leq y \leq 1 \; \text{and} \; x^{2} + z^{2} \leq 1 \; \text{for} \; y = 1\}.\]
+\end{problem}
+
+\begin{soln}
+    We break the surface into $S_{1}$, which we say is the paraboloid, and $S_{2}$, which we define as the disk. Start by evaluating on $S_{1}$.
+
+    We parametrize the surface as
+    \[\bvec{r}(\rho, \theta) = \left<\rho\cos\theta, \rho^{2}, \rho\sin\theta\right>,\]
+    making
+    \[r_{\rho} \times r_{\theta} = \begin{bmatrix}
+        \bvec{i} & \bvec{j} & \bvec{k} \\
+        \cos\theta & 2\rho & \sin\theta \\
+        -\rho\sin\theta & 0 & \rho\cos\theta
+    \end{bmatrix} = \left<2\rho^{2}\cos\theta, -\rho, 2\rho^{2}\sin\theta\right>.\]
+    Our surface integral then becomes
+    \begin{align*}
+        \iint\limits_{S}\bvec{F} \cdot d\bvec{S} &= \iint\limits_{D}\left<0, \rho^{2}, -\rho\sin\theta\right> \cdot \left<2\rho^{2}\cos\theta, -\rho, 2\rho^{2}\sin\theta\right>dA \\
+        &= \iint\limits_{D} -\rho^{4} - 2\rho^{3}\sin^{2}\theta dA.
+    \end{align*}
+    Since $S_{2}$ is bound by $y = 1$ and completely revolves around the $y$-axis, we say
+    \[0 \leq \rho \leq 1 \;\; \text{and} \;\; 0 \leq \theta \leq 2\pi.\]
+    So,
+    \begin{align*}
+        \iint\limits_{S_{1}}\bvec{F} \cdot d\bvec{S} &= -\int_{0}^{1}\int_{0}^{2\pi} \rho^{3} + 2\rho^{3}\sin^{2}\theta d\theta d\rho \\
+        &= -\int_{0}^{1}\int_{0}^{2\pi} \rho^{3} + \rho^{3}(1 - \cos(2\theta)) d\theta d\rho \\
+        &= -\int_{0}^{1}\int_{0}^{2\pi} \rho^{3}(2 - \cos(2\theta)) d\theta d\rho \\
+        &= -\int_{0}^{1} \rho^{3} d\rho \int_{0}^{2\pi} 2 - \cos(2\theta) d\theta \\
+        &= -\left(\frac{\rho^{4}}{4}\right) \biggr\rvert_{0}^{1} \left(2\theta - \frac{1}{2}\sin(2\theta)\right) \biggr\rvert_{0}^{2\pi} \\
+        &= -\frac{1}{4} \cdot 4\pi \\
+        &= -\pi.
+    \end{align*}
+    
+    Now, we solve the surface integral over $S_{2}$. This time our parametrization is
+    \[\bvec{r}(\rho, \theta) = \left<\rho\sin\theta, 1, \rho\cos\theta\right>,\]
+    which implies
+    \[r_{\rho} \times r_{\theta} = \begin{bmatrix}
+        \bvec{i} & \bvec{j} & \bvec{k} \\
+        \sin\theta & 0 & \cos\theta \\
+        \rho\cos\theta & 0 & -\rho\sin\theta
+    \end{bmatrix} = \left<0, \rho, 0\right>.\]
+    Now, we directly evaluate the integral with the bounds
+    \[0 \leq \rho \leq 1 \;\; \text{and} \;\; 0 \leq \theta \leq 2\pi,\]
+    yielding
+    \begin{align*}
+        \iint\limits_{S_{1}}\bvec{F} \cdot d\bvec{S} &= -\int_{0}^{1}\int_{0}^{2\pi} \rho d\theta d\rho \\
+        &= \int_{0}^{1} \rho d\rho \int_{0}^{2\pi} d\theta \\
+        &= \left(\frac{\rho^{2}}{2}\right) \biggr\rvert_{0}^{1} \left(\theta\right) \biggr\rvert_{0}^{2\pi} \\
+        &= \frac{1}{2} \cdot 2\pi \\
+        &= \pi.
+    \end{align*}
+    Summing yields a final answer of $\boxed{0}$.
+\end{soln}
+
+\begin{remark}
+    If one is familiar with Gauss's divergence theorem, then the above problem becomes significantly easier, which is why I recommend learning it even though it was never covered in class (I think?). In fact, the more efficient solution to the above problem is quite literally a one-liner. I'll show an example later.
+\end{remark}
+
+When a surface in three dimensions has a boundary curve, we can convert the surface integral into a line integral (which may be easier to handle) using Stokes's theorem.
 
 \begin{theorem}[Stokes's Theorem]
-    Let $S$ be a smooth, oriented surface with a smooth, closed boundary curve $\partial S$. For $\vec{F}$ with continuous first order partials on an open region containing $S$,
-    \[\iint\limits_{S}\left(\nabla \times \vec{F}\right) \cdot d\vec{S} = \oint_{\partial S}\vec{F} \cdot d\vec{r}.\]
+    Let $S$ be a smooth, oriented surface with a smooth, closed boundary curve $\partial S$. For $\bvec{F}$ with continuous first order partials on an open region containing $S$,
+    \[\iint\limits_{S}\left(\nabla \times \bvec{F}\right) \cdot d\bvec{S} = \oint_{\partial S}\bvec{F} \cdot d\bvec{r}.\]
 \end{theorem}
-
-\begin{proof}
-    Since any vector field in $\RR^{3}$ can generally be written as the sum of component vectors, we must only prove Stokes's theorem in one of these component directions, which without loss of generality, we choose to be $\bvec{k}$ for $\bvec{F} = P\bvec{i} + Q\bvec{j} + R\bvec{k}$. Using the summation properties of integration, we will have then constructed a valid general proof of the theorem. With that said, we wish to show
-    \[\iint\limits_{S}\left(\nabla \times R\bvec{k}\right)d\bvec{S} = \oint_{\partial S}R(x, y, z)dz.\]
-\end{proof}
 
 \begin{remark}
     The notation $\partial S$ simply denotes the boundary of $S$ and is a stylistic choice often used in the statement of Stokes's theorem.
 \end{remark}
 
-\begin{remark}
-    I also have no idea if the professor will even cover Stokes's theorem, so don't worry about it too much.
-\end{remark}
+For the sake of it, here is Gauss's divergence theorem as well.
 
-Now for closed curves, you should be set; one of the above methods will most certainly give you an answer in a quicker manner than direct evaluation. But sometimes, direct evaluation is necessary when open curves in non-conservative vector fields are involved. Consider the following example.
+\begin{theorem}[Gauss's Divergence Theorem]
+    Let $S$ be a closed surface enclosing a solid region $E$ and let $\bvec{F}$ be a vector function whose components have have continuous first order partial derivatives on an open region containing $E$. Then
+    \[\iint\limits_{S} \bvec{F} \cdot d\bvec{S} = \iiint\limits_{E}\left(\nabla \cdot \bvec{F}\right)dV.\]
+\end{theorem}
+
+I won't prove it here, but consider the above example that took like a page and a half.
 
 \begin{example}
-    Given a curve $C$ defined by $\vec{r}(t) = \left<t, 2t, 3t\right>$ for $\sqrt{\frac{\pi}{2}} \leq t \leq \sqrt{\frac{3\pi}{2}}$ and a function $\vec{F}(x, y, z) = \left<x\sin yz, y\sin xz, z\sin xy\right>$, evaluate
-    \[\oint_{C}\vec{F} \cdot d\vec{r}.\]
+    Evaluate
+    \[\iint\limits_{S}\bvec{F} \cdot d\bvec{S}\]
+    where $\bvec{F} = \left<0, y, -z\right>$ and
+    \[S = \{(x, y, z) \mid y = x^{2} + z^{2} \; \text{for} \; 0 \leq y \leq 1 \; \text{and} \; x^{2} + z^{2} \leq 1 \; \text{for} \; y = 1\}.\]
 
     \begin{soln}
-        From above, we have
-        \[\oint_{C}\vec{F} \cdot d\vec{r} = \int_{\sqrt{\frac{\pi}{2}}}^{\sqrt{\frac{3\pi}{2}}}\vec{F}(\vec{r}(t)) \cdot \ddvec{r}(t)dt.\]
-        By direct evaluation
-        \[\vec{F}(\vec{r}(t)) = \left<t\sin(6t^{2}), 2t\sin(3t^{2}), 3t\sin(2t^{2})\right>\]
-        and
-        \[\ddvec{r}(t) = \left<12t^{2}\cos(6t^{2}), 12t^{2}\cos(3t^{2}), 12t^{2}\cos(2t^{2})\right>.\]
-        So,
-        \[\vec{F}(\vec{r}(t)) \cdot \ddvec{r}(t) = 12t^{3}\left(\sin(6t^{2})\cos(6t^{2}) + \sin(3t^{2})\cos(3t^{2}) + \sin(2t^{2})\cos(2t^{2})\right)\]
-        which makes
+        A quick calculation shows that
         \begin{align*}
-            \oint_{C}\vec{F} \cdot d\vec{r} &= \int_{\sqrt{\frac{\pi}{2}}}^{\sqrt{\frac{3\pi}{2}}}12t^{3}\left(\sin(6t^{2})\cos(6t^{2}) + \sin(3t^{2})\cos(3t^{2}) + \sin(2t^{2})\cos(2t^{2})\right)dt \\
-            &= \int_{\sqrt{\frac{\pi}{2}}}^{\sqrt{\frac{3\pi}{2}}}6t^{3}\left(\sin(12t^{2}) + \sin(6t^{2}) + \sin(4t^{2})\right)dt
+            \nabla \cdot \bvec{F} &= \left<\frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z}\right> \cdot \left<0, y, -z\right> \\
+            &= 0.
         \end{align*}
+        Since the integrand of the triple integral is $0$, our answer is simply $\boxed{0}$. Much faster right?
     \end{soln}
 \end{example}
