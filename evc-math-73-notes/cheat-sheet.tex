@@ -1,0 +1,76 @@
+\documentclass[11pt]{scrartcl}
+\usepackage[sexy]{evan}
+
+\usepackage{parskip}
+\usepackage{scrhack}
+\usepackage{tabularx}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{subcaption}
+\usepackage{graphicx}  
+\usepackage{epigraph}
+\usepackage{bm}
+
+\newcommand{\bvec}[1]{\mathbf{#1}}
+\newcommand{\curl}{\mathrm{curl}\;}
+\newcommand{\vdiv}{\mathrm{div}\;}
+
+
+\begin{document}
+    Symmetric Equation for Line in 3D Space:
+    \[\frac{x - x_{0}}{a} = \frac{y - y_{0}}{b} = \frac{z - z_{0}}{c}.\]
+    Distance from Point $Q$ to Line with Point $P$ and Direction $\bvec{v}$:
+    \[D = \frac{\magnitude{\overrightarrow{PQ} \times \bvec{v}}}{\magnitude{\bvec{v}}}.\]
+    Distance from point $P = (x_{0}, y_{0}, z_{0})$ to plane $ax + by + cz + d = 0$:
+    \[D = \frac{\abs{ax_{0} + by_{0} + cz_{0} + d}}{\sqrt{a^{2} + b^{2} + c^{2}}}.\]
+    Unit Tangent, Unit Normal, Binormal:
+    \[\bvec{T} = \frac{\bvec{r}'(t)}{\magnitude{\bvec{r}'(t)}} \; \text{and} \; \bvec{N} = \frac{\bvec{T}'(t)}{\magnitude{\bvec{T}'(t)}} \; \text{and} \; \bvec{B} = \bvec{T} \times \bvec{N}.\]
+    Critical Point when $f_{x}$ and $f_{y}$ are both $0$.
+    \[D(x, y) = \begin{vmatrix}
+        f_{xx} & f_{xy} \\
+        f_{yx} & f_{yy}
+    \end{vmatrix} = f_{xx}f_{yy} - f_{xy}^{2}.\]
+    If $D > 0$ and $f_{xx} > 0$, we have a local min. If $D > 0$ and $f_{xx} < 0$, we have a local max. If $D < 0$, we have a straddle point. To solve for min and max on the boundary, parametrize and create a function of $t$ for the boundary curve then use chain rule to create a function for the derivative. Look for maxima and minima for $t$ in the range. Also check corner points.
+    
+    Chain Rule:
+    \[\frac{\partial g}{\partial t} = \frac{\partial g}{\partial x}\frac{dx}{dt} + \frac{\partial g}{\partial y}\frac{dy}{dt}.\]
+    Lagrange Multipliers (optimization of $f$ given $g(x, y) = c$):
+    \[f(x, y, \lambda) = f(x, y) + \lambda(g(x, y) - c).\]
+    Set $f_{x}$, $f_{y}$, and $f_{\lambda}$ all equal to $0$ and compare $z$ values to find min and max.
+
+    Jacobian of a 2D Transformation:
+    \[J(u, v) = \begin{vmatrix}
+        \frac{\partial x}{\partial u} & \frac{\partial x}{\partial v} \\
+        \frac{\partial y}{\partial u} & \frac{\partial y}{\partial v}
+    \end{vmatrix}.\]
+    Integral Transformation 2D:
+    \[\iint\limits_{D}f(x, y)dxdy = \iint\limits_{D}f(x(u, v), y(u, v))\abs{J(u, v)}dudv.\]
+    Spherical Coordinates ($\phi$ is the zenith angle):
+    \[x = \rho\cos\theta\sin\phi \; \text{and} \; y = \rho\sin\theta\sin\phi \; \text{and} \; z = \rho\cos\phi \; \text{and} \; J(\rho, \theta, \phi) = \rho^{2}\sin\phi.\]
+    Surface Area:
+    \[S = \iint\limits_{D}\sqrt{1 + f_{x}^{2} + f_{y}^{2}}dA.\]
+    Direction Vectors (if $\bvec{u}$ is a unit vector; otherwise divide by $\magnitude{\bvec{u}})$:
+    \[D_{u} = \nabla f \cdot \bvec{u}.\]
+    Conservative Vector Field:
+
+    $\bvec{F}$ is conservative if $\bvec{F} = \nabla f$.
+
+    Curl and Divergence:
+    \[\curl\bvec{F} = \nabla \times \bvec{F} \;\; \text{and} \;\; \vdiv\bvec{F} = \nabla \cdot \bvec{F}.\]
+    Green's Theorem (2D surface):
+    \[\oint_{C}\bvec{F} \cdot d\bvec{r} = \oint_{C}(Pdx + Qdy) = \iint\limits_{D}\left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right)dA.\]
+    Stokes's Theorem:
+    \[\oint_{C}\bvec{F} \cdot d\bvec{r} = \iint\limits_{S}\curl\bvec{F} \cdot d\bvec{S}.\]
+    Gauss's Theorem:
+    \[\iint\limits_{S}\curl\bvec{F} \cdot d\bvec{S} = \iiint\limits_{E}\vdiv\bvec{F}dV.\]
+    Line Integral of Scalar Function:
+    \[\oint_{C}f(x, y, z)ds = \int_{C}f(\bvec{r}(t))\magnitude{\bvec{r}'(t)}dt.\]
+    Line Integral of Vector Function:
+    \[\oint_{C}\bvec{F} \cdot d\bvec{r} = \oint_{C}(Pdx + Qdy + Rdz) = \int_{C}\bvec{F}(\bvec{r}(t)) \cdot \bvec{r}'(t)dt.\]
+    Fundamental Theorem of Line Integration:
+    \[\oint_{C}\nabla f \cdot d\bvec{r} = f(\bvec{r}(b)) - f(\bvec{r}(a)).\]
+    Surface Integral of Scalar Function (If parametrized with $z = g(x, y)$, it's the same thing but $(u, v) = (x, y)$):
+    \[\iint\limits_{S}f(x, y, z)dS = \iint\limits_{D}f(\bvec{r}(u, v))\magnitude{\bvec{r}_{u} \times \bvec{r}_{v}}dA.\]
+    Surface Integral of Vector Function:
+    \[\iint\limits_{S}\bvec{F} \cdot d\bvec{S} = \iint\limits_{D}\bvec{F} \cdot (\bvec{r}_{u} \times \bvec{r}_{v})dA.\]
+\end{document}
